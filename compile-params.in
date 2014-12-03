@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# main parameters
+
+#export prefix64=/opt/octave-extensions/x64-libs
+export prefix64=/usr/local
+export JAVA_HOME=/usr/lib/jvm/default-java
+export octave64src=/opt/octave-extensions/octave-3.8.2
+export libs64src_archives=/opt/octave-extensions/x64-libs/_archives
+export libs64src_mods=/opt/octave-extensions/x64-libs/_mods
+export libs64src=/opt/octave-extensions/x64-libs/src
+
+# derrived parameters
+
+export LD_LIBRARY_PATH=${prefix64}/lib
+export LD_RUN_PATH=${prefix64}/lib
+# also maybe: have your system administrator add above DIR to `/etc/ld.so.conf'
+
+export SUITESPARSE=${prefix64}
+export QHULL=${prefix64}
+export ARPACK=${prefix64}
+export LAPACK=${prefix64}
+export BLAS=${prefix64}
+
+#export libs64="-L${prefix64}/lib -llapack -lblas -lamd -lqhull -lcolamd -lcco$
+export libs64="-L${prefix64}/lib"
+
