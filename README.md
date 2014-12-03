@@ -48,5 +48,101 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
 Enjoy! And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!
 Richard Calaba (calaba@gmail.com)
 
-TODO: <include references to various sites resolving some of the issues while compiling Libs or Octave sources>
+Additional References To 3rd party libraries used while compiling Octave with 64bit indexing:
+=============================================================================================
 
+All libraries which are required by Octave are referred here:
+    https://www.gnu.org/software/octave/doc/interpreter/External-Packages.html 
+
+However only some of them require re-compilation with 64bit enabled indexing as mentioned here:
+
+    https://www.gnu.org/software/octave/doc/interpreter/Compiling-Octave-with-64_002dbit-Indexing.html
+
+and also here:
+
+    http://octave.1599824.n4.nabble.com/make-test-failure-d1mach-i-out-of-bounds-td2286214.html
+
+Based on the links above I used following libraries to compile Octave 3.8.2 with 64bit indexing:
+================================================================================================
+
+Octave 3.8.2 Sources:
+=====================
+Home:               http://www.gnu.org/software/octave/download.html
+Octave Source Code: ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz
+
+
+SuiteSparse-4.4.1.tar.gz
+========================
+Home:           http://faculty.cse.tamu.edu/davis/suitesparse.html
+Library Source: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.1.tar.gz
+
+Arpack96 (ARPACK folder)
+========================
+Home:           http://www.caam.rice.edu/software/ARPACK/
+Library Source: http://www.caam.rice.edu/software/ARPACK/download.html#ARPACK
+
+blas.tgz - REFERENCE BLAS 3.5.0
+===============================
+Home:           http://www.netlib.org/blas/
+Library Source: http://www.netlib.org/blas/blas.tgz
+
+lapack-3.5.0.tgz
+================
+Home:           http://www.netlib.org/lapack/
+Library Source: http://www.netlib.org/lapack/lapack-3.5.0.tgz
+
+glpk-4.55.tar.gz
+================
+Home:           http://www.gnu.org/software/glpk/
+Library Source: http://ftp.gnu.org/gnu/glpk/glpk-4.55.tar.gz
+
+metis-4.0.3.tar.gz
+==================
+(Metis is needed for SuiteSparse compilation, the SuiteSparse 4.4.1 README is mentioning use of Metis 4.0.1 however Metis 4.0.1 doesn't compile in Ubuntu 14.04. However the Metis 4.0.3 compiles fine)
+Home:           http://glaros.dtc.umn.edu/gkhome/metis/metis/download
+Library Source: http://glaros.dtc.umn.edu/gkhome/fsroot/sw/metis/OLD
+                http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/OLD/metis-4.0.3.tar.gz
+                http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/OLD/metis-4.0.1.tar.gz
+
+
+qhull-2012.1-src.tgz
+====================
+Home:           http://www.qhull.org/
+Library Source: http://www.qhull.org/download/qhull-2012.1-src.tgz
+
+qrupdate-1.1.2.tar.gz
+=====================
+Home:           https://sourceforge.net/projects/qrupdate/
+Library Source: http://sourceforge.net/projects/qrupdate/files/qrupdate/1.2/qrupdate-1.1.2.tar.gz/download
+
+Not used libraries - feel free to plug them in:
+===============================================
+
+In addition in the sub-folder '_not_used' of the folder where all the source archives of used libraries are located there there are following libraries:
+
+    ATLAS atlas3.10.2.tar.bz2 (BLAS / LAPACK replacement) 
+    =====================================================
+    Home:   https://sourceforge.net/projects/math-atlas/files/
+    Source: http://sourceforge.net/projects/math-atlas/files/Stable/3.10.2/atlas3.10.2.tar.bz2/download
+        
+    Arpack-Ng - newer and more optimized ARPACK version
+    ===================================================
+    Home:       https://github.com/opencollab/arpack-ng
+    Source:     http://forge.scilab.org/index.php/p/arpack-ng/downloads/get/arpack-ng_3.1.5.tar.gz
+    
+    Metis-4.0.1
+    ============
+    As mentioned above - Metis 4.0.1 doesn't compile in Ubuntu Desktop 14.04 - thus using Metis 4.0.3
+
+
+References to Web Sites mentioning some of the workarounds while compiling Octave or one it's required libraries:
+=================================================================================================================
+
+1) https://lists.gnu.org/archive/html/octave-bug-tracker/2014-08/msg00210.html
+2) https://lists.gnu.org/archive/html/octave-bug-tracker/2014-08/msg00218.html
+2) http://ubuntuforums.org/showthread.php?t=1200824
+3) http://octave.1599824.n4.nabble.com/Re-jni-h-file-not-found-td4660656.html
+4) https://software.intel.com/en-us/forums/topic/362169
+5) http://www.flaterco.com/kb/Octave.html
+6) http://octave.1599824.n4.nabble.com/Octave-2-9-9-Compile-Problem-on-Linux-i686-td1605865.html
+7) 
