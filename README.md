@@ -6,11 +6,15 @@ Octave 3.8.2 compiled with --enable-64 (experimental switch) on x64 Ubuntu Linux
 Basic procedure to compile Octave with 64-bit indexing (experimental switch --enable-64):
 =========================================================================================
 
-1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file
+1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/ or from my GitHub backup https://github.com/calaba/Ubuntu-Linux-Desktop--14.04-LTS-ISO). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well - i.e. 14.04.1 or 14.10 - I just didn't have time to test those (yet).
+
 2) (optional) Update Ubuntu Linux Desktop with latest updates
+
 3) Install git by running command 'sudo apt-get install git' from terminal window (needs Internet connection)
+
 4) Clone this repository into your folder of choice by executing: 
     sudo git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git
+
 5) Run 'sudo all.sh' script in terminal window - it will:
 
     a) Install all required libraries and tools for compilation using apt - executes script '1-compile-install-prereq.sh' 
