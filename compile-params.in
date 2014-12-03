@@ -1,14 +1,14 @@
 #!/bin/sh
 
-# main parameters
+# main parameters - various source and installation directories
 
-#export prefix64=/opt/octave-extensions/x64-libs
+#export prefix64=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs
 export prefix64=/usr/local
 export JAVA_HOME=/usr/lib/jvm/default-java
-export octave64src=/opt/octave-extensions/octave-3.8.2
-export libs64src_archives=/opt/octave-extensions/x64-libs/_archives
-export libs64src_mods=/opt/octave-extensions/x64-libs/_mods
-export libs64src=/opt/octave-extensions/x64-libs/src
+export octave64src=/opt/octave-3.8.2-enable-64-ubuntu-14.04/octave-3.8.2
+export libs64src_archives=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/_archives
+export libs64src_mods=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/_mods
+export libs64src=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/src
 
 # derrived parameters
 
@@ -22,6 +22,5 @@ export ARPACK=${prefix64}
 export LAPACK=${prefix64}
 export BLAS=${prefix64}
 
-#export libs64="-L${prefix64}/lib -llapack -lblas -lamd -lqhull -lcolamd -lcco$
 export libs64="-L${prefix64}/lib"
 
