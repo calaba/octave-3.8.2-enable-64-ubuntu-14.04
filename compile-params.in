@@ -2,25 +2,34 @@
 
 # main parameters - various source and installation directories
 
+# -- git clone directory
+export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
+
+# -- installation directory for libraries needed for octave compilation in 64bit indexing mode
+
 #export prefix64=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs
 export prefix64=/usr/local
-export JAVA_HOME=/usr/lib/jvm/default-java
-export octave64src=/opt/octave-3.8.2-enable-64-ubuntu-14.04/octave-3.8.2
-export libs64src_archives=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/_archives
-export libs64src_mods=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/_mods
-export libs64src=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs/src
 
-# derrived parameters
+# -- other directories for automated compilation
+export JAVA_HOME=/usr/lib/jvm/default-java
+export octave64src=${octave64_gitroot}/octave-3.8.2
+export libs64src_archives=${octave64_gitroot}/x64-libs/_archives
+export libs64src_mods=${octave64_gitroot}/x64-libs/_mods
+export libs64src=${octave64_gitroot}/x64-libs/src
+
+# -- directories for loading of dynamic libraries
+# -- might need to be added to user prfofile
+# -- also maybe: have your system administrator add above DIR to `/etc/ld.so.conf'
 
 export LD_LIBRARY_PATH=${prefix64}/lib
 export LD_RUN_PATH=${prefix64}/lib
-# also maybe: have your system administrator add above DIR to `/etc/ld.so.conf'
 
-export SUITESPARSE=${prefix64}
-export QHULL=${prefix64}
-export ARPACK=${prefix64}
-export LAPACK=${prefix64}
-export BLAS=${prefix64}
+# -- locations of respective libraries
+export SUITESPARSE=${prefix64}/lib
+export QHULL=${prefix64}/lib
+export ARPACK=${prefix64}/lib
+export LAPACK=${prefix64}/lib
+export BLAS=${prefix64}/lib
 
+# -- another reference to our pre-compiled & installed libraries for octave compilation
 export libs64="-L${prefix64}/lib"
-
