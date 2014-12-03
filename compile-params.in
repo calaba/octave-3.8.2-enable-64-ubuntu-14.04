@@ -7,7 +7,7 @@ export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
 
 # -- installation directory for libraries needed for octave compilation in 64bit indexing mode
 
-#export prefix64=/opt/octave-3.8.2-enable-64-ubuntu-14.04/x64-libs
+#export prefix64=${octave64_gitroot}/x64-libs
 export prefix64=/usr/local
 
 # -- other directories for automated compilation
