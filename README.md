@@ -242,9 +242,9 @@ For troubleshooting purposes if you wanna compare what is happening in the logs 
 5) In addition install manually standard libraries required by Octave:
 
     (as root)
-    sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev
+    sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev sudo         sudo apt-get -y install  libarpack2 libarpack2-dev
     
-6) Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - copy it to the /opt directory. Then  make & instal the ARPACK library as follows:
+6) (workaround) If the above apt-get install libarpack2 libarpack2-dev doesn't work) - compile ARPACK from sources and install it. Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - copy it to the /opt directory. Then  make & instal the ARPACK library as follows:
 
     (as root - assuming ARPACK flder and files and the make_so_lib.sh script are copied into /opt/ARPACK)
     sudo su
@@ -277,6 +277,30 @@ For troubleshooting purposes if you wanna compare what is happening in the logs 
     export LD_LIBRARY_PATH=/usr/local/lib
     export LD_RUN_PATH=/usr/local/lib
     ./configure > configure.log
+    
+You will get following error/warning output:
+
+    root@ubuntu:/opt/octave-3.8.2# ./configure > configure.log
+    configure: WARNING: UNEXPECTED: found nth_element working in g++ 4.8.2.  Has it been patched on your system?
+    configure: WARNING: UNEXPECTED: found nth_element working in g++ 4.8.2.  Has it been patched on your system?
+    root@ubuntu:/opt/octave-3.8.2# 
+
+8) Make and test Octave
+
+    (as root)
+    make > make.log
+
+You will get following error/warning output:
+
+    make check
+
+You will get following test output at the end:
+
+
+
+    
+    
+    
     
 
 
