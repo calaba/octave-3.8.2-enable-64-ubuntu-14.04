@@ -21,7 +21,7 @@ TIME="\nExecution Time of Octave Compilation: %E \n"
 time ./4-compile-64-octave.sh > 4-compile-64-octave.log 2>&1
 
 cd ${octave64_gitroot}
-read  -p "Octave compilation & internal tests finished, press a key to run octave ..." keyinput -n 1
+read  -p "Octave compilation and internal tests finished, press a key to run octave ..." keyinput -n 1
 
 ./5-run_64bit_octave.sh 
 
