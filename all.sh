@@ -25,5 +25,8 @@ read -p "Octave compilation & internal tests finished, press a key to run octave
  
 ./5-run_64bit_octave.sh 
 
-echo "Octave interactive test done, if you are satisfied run 'sudo make install' from ${octave64src} directory ..."
+echo "Octave interactive test done."
+echo "To install octave run: 'sudo make install' from ${octave64src} ..."
+echo
+
 
