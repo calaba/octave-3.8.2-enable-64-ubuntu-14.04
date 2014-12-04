@@ -33,19 +33,19 @@ It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
-        This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
+    This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
     
     b) Script '2-compile-unpack-src.sh' - unpacks all sources of used libraries and sources of Octave 3.8.2 (currently latest).
        
-       All sources are stored in archive files in subdirectory 'x64-libs\_archives' - those are orignal versions downloaded from their respective web sites (see below for links to original web sites). Feel free to replace them with your own downloaded files or newer versions of those used libraries. Remark: If you want use newer versions you might need to play with the automatuion script source codes to make sure the rest of the automated compilation works fine.
+    All sources are stored in archive files in subdirectory 'x64-libs\_archives' - those are orignal versions downloaded from their respective web sites (see below for links to original web sites). Feel free to replace them with your own downloaded files or newer versions of those used libraries. Remark: If you want use newer versions you might need to play with the automatuion script source codes to make sure the rest of the automated compilation works fine.
        
     c)  Script '3-compile-64-libs.sh' - Compiles & installs required libraries in mode to support 64-bit indexing.
     
-       In order to succeed with compilation of the libraries in 64-bit indexing mode it uses patches of the source code (mostly compiling options) which are stored in sub-directory 'x64-libs\_mods\<library_name>.mod' for each library. Those patches stored here might be version specific and might not work well if you decide to compile this repository with newer version(s).
+    In order to succeed with compilation of the libraries in 64-bit indexing mode it uses patches of the source code (mostly compiling options) which are stored in sub-directory 'x64-libs\_mods\<library_name>.mod' for each library. Those patches stored here might be version specific and might not work well if you decide to compile this repository with newer version(s).
     
     d) Script '4-compile-64-octave.sh' - Compiles Octave 3.8.2 sources with 64-bit indexing (option --enable-64) and uses the pre-compiled libraries from the step c) above.  
     
-        At the end of the Octave source code compilation it runs Octave internal tests (by calling 'make check' in octave source directory) - all test are sopposed to succeed - this is the expected output at the end of the script after running make check:
+    At the end of the Octave source code compilation it runs Octave internal tests (by calling 'make check' in octave source directory) - all test are sopposed to succeed - this is the expected output at the end of the script after running make check:
     
             <TODO> fill correct values:
             Summary: 
@@ -59,7 +59,7 @@ REMARK: All scripts above in steps a) to d) store full output (stdout and stderr
     
     e) Script '5-run_64bit_octave.sh' - Runs compiled Octave with 64-bit indexing enabled in interactive mode. 
     
-        You can test whether it works as you need. I.e. you can test whether you can allocate large memory arrays which require 64-bit index for it's elements:
+    You can test whether it works as you need. I.e. you can test whether you can allocate large memory arrays which require 64-bit index for it's elements:
     
        octave:1> a = zeros (1024*1024*1024*3, 1, 'int8');
         
