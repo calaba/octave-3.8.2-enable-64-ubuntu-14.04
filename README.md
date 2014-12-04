@@ -205,7 +205,7 @@ In addition in the sub-folder '_not_used' of the folder where all the source arc
     As mentioned above - Metis 4.0.1 doesn't compile in Ubuntu Desktop 14.04 - thus using Metis 4.0.3
 
 
-References to Ocatve compilation trobleshooting Web Sites:
+References to Ocatve compilation troubleshooting Web Sites:
 ==========================================================
 
 While working on this Octave compilation challenge I had to research a lot of issues which I was facing while trying to succeed with the 64-bit indexing enabled Octave. There were many trials and errors. I wouldn't succeed (or would give up wasting my time) wouldn't it be many various posts on the Internet addressing same/similiar issues I was facing. It is not in my power to mention all of those sites which helped me to get some clues how to workaround som of the compilation or testing issues. Here below I am listing at least some of them ...
