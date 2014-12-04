@@ -63,12 +63,12 @@ REMARK: All scripts above in steps a) to d) store full output (stdout and stderr
     
        octave:1> a = zeros (1024*1024*1024*3, 1, 'int8');
         
-    If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should not get this error which you will get in octave with default 32-bit indexing:
+If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should not get this error which you will get in octave with default 32-bit indexing:
         
         error: memory exhausted or requested size too large
         for range of Octave's index type 
     
-    In regular Octave with 32-bit indexing the physical limit of the memory array index seems to be (2^31 - 31 bits), this is the output of memory allocation of 2GBs and 2GBs - 1 Byte in regular octave 3.8.2:
+In regular Octave with 32-bit indexing the physical limit of the memory array index seems to be (2^31 - 31 bits), this is the output of memory allocation of 2GBs and (2GBs - 1 Byte) in regular octave 3.8.2:
     
         octave:15> a = zeros (2147483647, 1, 'int8');
         error: out of memory or dimension too large for Octave's index type
