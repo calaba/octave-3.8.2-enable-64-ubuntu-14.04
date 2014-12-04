@@ -27,6 +27,8 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     cd /opt/octave-3.8.2-enable-64-ubuntu-14.04
     ./all.sh 2>all-err.log
     
+    Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break.
+    
     It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
