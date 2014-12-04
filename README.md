@@ -47,13 +47,14 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     
         At the end of the Octave source code compilation it runs Octave internal tests (by calling 'make check' in octave source directory) - all test are sopposed to succeed - this is the expected output at the end of the script after running make check:
     
-            Summary: <TODO> fill correct values:
+            <TODO> fill correct values:
+            Summary: 
+            
+              PASS     11202
+              FAIL         0
+              XFAIL        7
+              SKIPPED    395
 
-                PASS     11202 - more
-                FAIL         0
-                XFAIL        7 - expected failures
-                SKIPPED    395 - less
-                
     REMARK: All scripts above in steps a) to d) store full output (stdout and stderr) into file with same name as the script name and extension .log - i.e. 2-compile-unpack-src.log, 3-compile-64-libs.log, etc. You can check those for more details while troubleshooting issues.
     
     e) Script '5-run_64bit_octave.sh' - Runs compiled Octave with 64-bit indexing enabled in interactive mode. 
