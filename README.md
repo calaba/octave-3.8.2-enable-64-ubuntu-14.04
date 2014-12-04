@@ -439,7 +439,9 @@ You will get following error/warning output:
       PASS     11547
       FAIL         0
       XFAIL        7
-      SKIPPED     50
+      SKIPPED     50                
+      
+      (!!! if you are getting more SKIPPED tests - then you are missing some libraries for optional functionality !!!)
     
     See the file test/fntests.log for additional details.
     
