@@ -205,7 +205,7 @@ In addition in the sub-folder '_not_used' of the folder where all the source arc
     As mentioned above - Metis 4.0.1 doesn't compile in Ubuntu Desktop 14.04 - thus using Metis 4.0.3
 
 
-References to Ocatve compilation troubleshooting Web Sites:
+References to Octave compilation troubleshooting Web Sites:
 ==========================================================
 
 While working on this Octave compilation challenge I had to research a lot of issues which I was facing while trying to succeed with the 64-bit indexing enabled Octave. There were many trials and errors. I wouldn't succeed (or would give up wasting my time) wouldn't it be many various posts on the Internet addressing same/similiar issues I was facing. It is not in my power to mention all of those sites which helped me to get some clues how to workaround som of the compilation or testing issues. Here below I am listing at least some of them ...
@@ -223,3 +223,58 @@ While working on this Octave compilation challenge I had to research a lot of is
 6) http://www.flaterco.com/kb/Octave.html
 
 7) http://octave.1599824.n4.nabble.com/Octave-2-9-9-Compile-Problem-on-Linux-i686-td1605865.html
+
+8) http://simon.bonners.ca/blog///blog5.php/installing-arpack-1-0-8-in-octave-for-ub-10
+
+Octave Sources compilation 32-bit indexing mode (default):
+==========================================================
+
+For troubleshooting purposes if you wanna compare what is happening in the logs being produced while compiling Octave 3.8.2 from it's sources on Ubuntu 14.04 / 14.04.1 - here adding step-by-step scenari how to compile Octave with standard options (without the --enable-64 indexing):
+
+1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well - i.e. 14.04.1 or 14.10 - I just didn't have time to test those (yet).
+
+2) (optional) Update Ubuntu Linux Desktop with latest updates (Internet connection required)
+
+3) Download Octave sources (ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz) and extract it to /opt directory
+
+4) Run the script '1-compile-install-prereq.sh' - it will install required tools and libs for compilation. It might install too much ... (900MB)
+
+5) In addition install manually standard libraries required by Octave:
+
+    (as root)
+    sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev
+    
+6) Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - i.e. by copying also to the /opt directory. Then  make & instal the ARPACK library as follows:
+
+    (as root - assuming ARPACK flder and files and the make_so_lib.sh script are copied into /opt/ARPACK)
+    sudo su
+    cd /opt/ARPACK
+    nano ARmake.inc
+    --> edit the ARmake.inc file 
+    --> find 'home = $(HOME)/ARPACK' and replace it with 'home = /opt/ARPACK'
+    --> find 'ARPACKLIB  = $(home)/libarpack_$(PLAT).a' and repalce it with 'ARPACKLIB  = $(home)/libarpack.a'
+    --> find 'FC      = f77' and replace it with 'FC      = gfortran'
+    --> find 'FFLAGS  = -O -cg89' and replace it with 'FFLAGS  = -O -fPIC'
+    --> find 'MAKE    = /bin/make' and replace it with 'MAKE    = /usr/bin/make'
+    --> Then save the file ARmake.inc
+    make lib
+    --> create so lib
+    mkdir tmp 
+    cd tmp 
+    ar x ../libarpack.a 
+    gcc -shared -o ../libarpack.so *.o -L/usr/local/lib -llapack -lblas 
+    cd .. 
+    rm -Rf tmp 
+    --> copy libs to /usr/local/lib
+    cp -f libarpack.a /usr/local/lib
+    cp -f libarpack.so /usr/local/lib
+
+7) Configure the Octave sources for compilation:
+
+    (as root)
+    cd /opt/octave-3.8.2
+    ./configure > configure.log
+    
+
+
+
