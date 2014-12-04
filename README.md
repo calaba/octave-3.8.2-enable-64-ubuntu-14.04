@@ -177,10 +177,15 @@ References to Web Sites mentioning some of the workarounds while compiling Octav
 =================================================================================================================
 
 1) https://lists.gnu.org/archive/html/octave-bug-tracker/2014-08/msg00210.html
+
 2) https://lists.gnu.org/archive/html/octave-bug-tracker/2014-08/msg00218.html
-2) http://ubuntuforums.org/showthread.php?t=1200824
-3) http://octave.1599824.n4.nabble.com/Re-jni-h-file-not-found-td4660656.html
-4) https://software.intel.com/en-us/forums/topic/362169
-5) http://www.flaterco.com/kb/Octave.html
-6) http://octave.1599824.n4.nabble.com/Octave-2-9-9-Compile-Problem-on-Linux-i686-td1605865.html
-7) TODO add more ... ???
+
+3) http://ubuntuforums.org/showthread.php?t=1200824
+
+4) http://octave.1599824.n4.nabble.com/Re-jni-h-file-not-found-td4660656.html
+
+5) https://software.intel.com/en-us/forums/topic/362169
+
+6) http://www.flaterco.com/kb/Octave.html
+
+7) http://octave.1599824.n4.nabble.com/Octave-2-9-9-Compile-Problem-on-Linux-i686-td1605865.html
