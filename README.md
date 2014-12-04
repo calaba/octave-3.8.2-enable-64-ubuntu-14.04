@@ -33,7 +33,7 @@ It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
-        This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. 
+        This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
     
     b) Script '2-compile-unpack-src.sh' - unpacks all sources of used libraries and sources of Octave 3.8.2 (currently latest).
        
