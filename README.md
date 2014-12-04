@@ -1,7 +1,7 @@
 GitHub-Repo: calaba / octave-3.8.2-enable-64-ubuntu-14.04
 =========================================================
 
-Description:  Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 Ubuntu Linux Desktop 14.04 LTS. Successfull compilation and tests required some of the used libraries (BLAS, LAPACK, ...) to be re-compiled with 64bit indexing as well.
+Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 Ubuntu Linux Desktop 14.04 LTS. Successfull compilation and tests required some of the used libraries (BLAS, LAPACK, ...) to be re-compiled with 64bit indexing as well.
 
 Basic procedure to compile Octave with 64-bit indexing (experimental switch --enable-64):
 =========================================================================================
@@ -86,8 +86,11 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
 Enjoy! Richard Calaba (calaba@gmail.com)
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
 
+3rd party libraries - required to re-compile Octave with --enable-64:
+=====================================================================
+
 Additional References To 3rd party libraries used while compiling Octave with 64bit indexing:
-=============================================================================================
+--------------------------------------------------------------------------------------------
 
 All libraries which are required by Octave are referred here:
 
@@ -101,8 +104,8 @@ and also here:
 
     http://octave.1599824.n4.nabble.com/make-test-failure-d1mach-i-out-of-bounds-td2286214.html
 
-Based on the links above I used following libraries to compile Octave 3.8.2 with 64-bit indexing:
-=================================================================================================
+Based on the links above - following libraries are used to compile Octave with 64-bit indexing:
+-----------------------------------------------------------------------------------------------
 
 Octave 3.8.2 Sources:
 ---------------------
