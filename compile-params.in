@@ -10,6 +10,19 @@ export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
 #export prefix64=${octave64_gitroot}/x64-libs
 export prefix64=/usr/local
 
+# -- additional options while configuring Octave source code compilation
+# Full details - see: https://www.gnu.org/software/octave/doc/interpreter/Running-Configure-and-Make.html#Running-Configure-and-Make
+# -- 
+# -- Use: --enable-bounds-check to enable consistency checks for indexing operators 
+# -- 
+#         export octave64_config_extra="--enable-bounds-check"
+# -- 
+# -- Use: --disable-docs to skip compilation of documentation (can speed-up the compilation, you do not have to install texlite) 
+# -- 
+#         export octave64_config_extra="--disable-docs"
+# -- 
+export octave64_config_extra=""
+
 # -- other directories for automated compilation
 export JAVA_HOME=/usr/lib/jvm/default-java
 export octave64src=${octave64_gitroot}/octave-3.8.2
