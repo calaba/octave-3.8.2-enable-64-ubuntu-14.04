@@ -231,20 +231,20 @@ Octave Sources compilation 32-bit indexing mode (default):
 
 For troubleshooting purposes if you wanna compare what is happening in the logs being produced while compiling Octave 3.8.2 from it's sources on Ubuntu 14.04 / 14.04.1 - here adding step-by-step scenari how to compile Octave with standard options (without the --enable-64 indexing):
 
-1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well - i.e. 14.04.1 or 14.10 - I just didn't have time to test those (yet).
+1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well.
 
 2) (optional) Update Ubuntu Linux Desktop with latest updates (Internet connection required)
 
-3) Download Octave sources (ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz) and extract it to /opt directory
+3) Download Octave sources (ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz) and extract it to /opt directory (as root)
 
-4) Run the script '1-compile-install-prereq.sh' - it will install required tools and libs for compilation. It might install too much ... (900MB)
+4) Run the script 'sudo 1-compile-install-prereq.sh' - it will install required tools and libs for compilation. It might install too much ... (900MB)
 
 5) In addition install manually standard libraries required by Octave:
 
     (as root)
     sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev
     
-6) Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - i.e. by copying also to the /opt directory. Then  make & instal the ARPACK library as follows:
+6) Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - copy it to the /opt directory. Then  make & instal the ARPACK library as follows:
 
     (as root - assuming ARPACK flder and files and the make_so_lib.sh script are copied into /opt/ARPACK)
     sudo su
@@ -273,6 +273,9 @@ For troubleshooting purposes if you wanna compare what is happening in the logs 
 
     (as root)
     cd /opt/octave-3.8.2
+    export JAVA_HOME=/usr/lib/jvm/default-java
+    export LD_LIBRARY_PATH=/usr/local/lib
+    export LD_RUN_PATH=/usr/local/lib
     ./configure > configure.log
     
 
