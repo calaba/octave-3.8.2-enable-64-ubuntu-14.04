@@ -3,8 +3,8 @@ GitHub-Repo: calaba / octave-3.8.2-enable-64-ubuntu-14.04
 
 Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 Ubuntu Linux Desktop 14.04 LTS. Successfull compilation and tests required some of the used libraries (BLAS, LAPACK, ...) to be re-compiled with 64bit indexing as well.
 
-Basic procedure to compile Octave with 64-bit indexing (experimental switch --enable-64):
-=========================================================================================
+How to compile Octave with 64-bit indexing (experimental switch --enable-64):
+=============================================================================
 
 1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well - i.e. 14.04.1 or 14.10 - I just didn't have time to test those (yet).
 
@@ -13,12 +13,12 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
 3) Install git by running command 'sudo apt-get install git' from terminal window (Internet connection required)
 
 4) Clone this repository into your folder of choice (i.e. into /opt folder) by executing: 
-    
+
     (as root - sudo su)
     cd /opt
     sudo git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git
-    
-    It will download this repo to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole recompilation.
+
+It will download this repo to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole recompilation.
 
 5) Run 'all.sh' script in the terminal window - you can redirect the stderr output of the all.sh script to file - i.e. 'all-err.log'.
 
@@ -27,9 +27,9 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     cd /opt/octave-3.8.2-enable-64-ubuntu-14.04
     ./all.sh 2>all-err.log
     
-    Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break.
+Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break.
     
-    It will execute following scripts in this order:
+It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
@@ -55,7 +55,7 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
               XFAIL        7
               SKIPPED    395
 
-    REMARK: All scripts above in steps a) to d) store full output (stdout and stderr) into file with same name as the script name and extension .log - i.e. 2-compile-unpack-src.log, 3-compile-64-libs.log, etc. You can check those for more details while troubleshooting issues.
+REMARK: All scripts above in steps a) to d) store full output (stdout and stderr) into file with same name as the script name and extension .log - i.e. 2-compile-unpack-src.log, 3-compile-64-libs.log, etc. You can check those for more details while troubleshooting issues.
     
     e) Script '5-run_64bit_octave.sh' - Runs compiled Octave with 64-bit indexing enabled in interactive mode. 
     
@@ -63,7 +63,7 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     
        octave:1> a = zeros (1024*1024*1024*3, 1, 'int8');
         
-        If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should not get this error which you will get in octave with default 32-bit indexing:
+    If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should not get this error which you will get in octave with default 32-bit indexing:
         
         error: memory exhausted or requested size too large
         for range of Octave's index type 
@@ -81,31 +81,30 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     cd /opt/octave-3.8.2-enable-64-ubuntu-14.04/octave-3.8.2
     make install
     
-    After successfull installation you can type 'octave' from any terminal window to run your 64-bit indexing enabled Octave. 
+After successfull installation you can type 'octave' from any terminal window to run your 64-bit indexing enabled Octave. 
 
 Enjoy! Richard Calaba (calaba@gmail.com)
+
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
+
 
 3rd party libraries - required to re-compile Octave with --enable-64:
 =====================================================================
 
-Additional References To 3rd party libraries used while compiling Octave with 64bit indexing:
---------------------------------------------------------------------------------------------
-
 All libraries which are required by Octave are referred here:
 
-    https://www.gnu.org/software/octave/doc/interpreter/External-Packages.html 
+    1) https://www.gnu.org/software/octave/doc/interpreter/External-Packages.html 
 
 However only some of them require re-compilation with 64bit enabled indexing as mentioned here:
 
-    https://www.gnu.org/software/octave/doc/interpreter/Compiling-Octave-with-64_002dbit-Indexing.html
+    2) https://www.gnu.org/software/octave/doc/interpreter/Compiling-Octave-with-64_002dbit-Indexing.html
 
 and also here:
 
-    http://octave.1599824.n4.nabble.com/make-test-failure-d1mach-i-out-of-bounds-td2286214.html
+    3) http://octave.1599824.n4.nabble.com/make-test-failure-d1mach-i-out-of-bounds-td2286214.html
 
-Based on the links above - following libraries are used to compile Octave with 64-bit indexing:
------------------------------------------------------------------------------------------------
+Following libraries are used to compile Octave with 64-bit indexing:
+--------------------------------------------------------------------
 
 Octave 3.8.2 Sources:
 ---------------------
@@ -156,8 +155,8 @@ qrupdate-1.1.2.tar.gz
 Home:           https://sourceforge.net/projects/qrupdate/
 Library Source: http://sourceforge.net/projects/qrupdate/files/qrupdate/1.2/qrupdate-1.1.2.tar.gz/download
 
-Not used libraries - feel free to plug them in:
-===============================================
+Not used libraries (feel free to plug them in):
+-----------------------------------------------
 
 In addition in the sub-folder '_not_used' of the folder where all the source archives of used libraries are located there there are following libraries:
 
@@ -176,8 +175,10 @@ In addition in the sub-folder '_not_used' of the folder where all the source arc
     As mentioned above - Metis 4.0.1 doesn't compile in Ubuntu Desktop 14.04 - thus using Metis 4.0.3
 
 
-References to Web Sites mentioning some of the workarounds while compiling Octave or one it's required libraries:
-=================================================================================================================
+References to Ocatve compilation trobleshooting Web Sites:
+==========================================================
+
+While working on this Octave compilation challenge I had to research a lot of issues which I was facing while trying to succeed with the 64-bit indexing enabled Octave. There were many trials and errors. I wouldn't succeed (or would give up wasting my time) wouldn't it be many various posts on the Internet addressing same/similiar issues I was facing. It is not in my power to mention all of those sites which helped me to get some clues how to workaround som of the compilation or testing issues. Here below I am listing at least some of them ...
 
 1) https://lists.gnu.org/archive/html/octave-bug-tracker/2014-08/msg00210.html
 
