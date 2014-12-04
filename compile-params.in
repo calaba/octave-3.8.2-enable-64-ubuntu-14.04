@@ -17,7 +17,7 @@ export prefix64=/usr/local
 # -- 
 #         export octave64_config_extra="--enable-bounds-check"
 # -- 
-# -- Use: --disable-docs to skip compilation of documentation (can speed-up the compilation, you do not have to install texlite) 
+# -- Use: --disable-docs to skip compilation of documentation (can speed-up the compilation, you do not have to install texlive) 
 # -- 
 #         export octave64_config_extra="--disable-docs"
 # -- 
