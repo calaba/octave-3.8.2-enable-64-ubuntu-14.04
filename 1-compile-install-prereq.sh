@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# include main compilation parameters
+my_dir="$(dirname "$0")"
+. "$my_dir/compile-params.in"
+
 # install required libs in order to be able to compile 64 bit indexing octave (experimental)
 sudo apt-get update
 
