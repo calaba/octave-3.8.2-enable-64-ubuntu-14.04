@@ -24,7 +24,10 @@ sudo apt-get -y install libxft-dev libgl2ps-dev
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
 
 # to be able to compile documentation
-sudo apt-get -y install texlive
+if [![ ${octave64_config_extra} = *--disable-docs* ]]
+then
+    sudo apt-get -y install texlive
+fi
 
 # git support - for easy install of my pre-build Octave x64 repo over internet
 sudo apt-get -y install git
