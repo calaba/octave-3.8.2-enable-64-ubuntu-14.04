@@ -31,7 +31,7 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
 
     a) Script '1-compile-install-prereq.sh' 
     
-        This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 1GB of size tghus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. 
+        This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. 
     
     b) Script '2-compile-unpack-src.sh' - unpacks all sources of used libraries and sources of Octave 3.8.2 (currently latest).
        
@@ -65,6 +65,13 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
         error: memory exhausted or requested size too large
         for range of Octave's index type 
     
+    In regular Octave with 32-bit indexing the physical limit of the memory array index seems to be (2^31 - 31 bits), this is the output of memory allocation of 2GBs and 2GBs - 1 Byte in regular octave 3.8.2:
+    
+        octave:15> a = zeros (2147483647, 1, 'int8');
+        error: out of memory or dimension too large for Octave's index type
+        octave:15> a = zeros (2147483646, 1, 'int8');
+        octave:16> 
+
 6) If you are satisfied with Octave compilation with enabled 64bit indexing you can cd to Octave sources directory (octave-3.8.2) and install Octave by running command 'sudo make install'. 
 
     sudo su
