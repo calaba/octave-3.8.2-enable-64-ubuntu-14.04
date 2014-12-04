@@ -83,6 +83,12 @@ In regular Octave with 32-bit indexing the physical limit of the memory array in
     
 After successfull installation you can type 'octave' from any terminal window to run your 64-bit indexing enabled Octave. 
 
+REMARK: It might be necessary to set environment variables LD_LIBRARY_PATH and LD_RUN_PATH to the folder where the 64-bit indexing enabled libraries were installed. In the 'config-params.in' file in thos repo the folder for the libraries is stored in the environment variable ${prefix64}/lib (i.e. /usr/local/lib). Thus those commands might be handy to be included in the user profile:
+
+    export LD_LIBRARY_PATH=${prefix64}/lib
+    export LD_RUN_PATH=${prefix64}/lib
+
+
 Enjoy! Richard Calaba (calaba@gmail.com)
 
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
