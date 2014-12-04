@@ -286,7 +286,7 @@ You will get following error/warning output:
     configure: WARNING: UNEXPECTED: found nth_element working in g++ 4.8.2.  Has it been patched on your system?
     root@ubuntu:/opt/octave-3.8.2# 
 
-8) Make and test Octave
+8) Make Octave
 
     (as root)
     make > make.log
@@ -346,18 +346,107 @@ You will get following error/warning output:
        typedef typename DMT::element_type el_type;
                                           ^
 
-   ....
-   
-   
-
-    ....
     
+       src/octave-gui.cc:91:1: warning: unused parameter 'msg' [-Wunused-parameter]
+    Warning: dropping duplicate messages in 'languages/be_BY.qm':
     
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/de_DE.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/en_US.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/es_ES.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/fr_FR.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/nl_NL.qm':
+    
+    * Context: files_dock_widget
 
+   * Source: Find Files...
 
+    Warning: dropping duplicate messages in 'languages/pt_BR.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/pt_PT.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/ru_RU.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    Warning: dropping duplicate messages in 'languages/uk_UA.qm':
+    
+    * Context: files_dock_widget
+    * Source: Find Files...
+    
+    In file included from main.cc:70:0:
+    main.cc: In function ‘bool display_available(std::string&)’:
+    main.cc:108:52: warning: use of old-style cast [-Wold-style-cast]
+               Screen *screen = DefaultScreenOfDisplay (display);
+                                                        ^
+    main.cc:108:52: warning: use of old-style cast [-Wold-style-cast]
+               Screen *screen = DefaultScreenOfDisplay (display);
+                                                        ^
+    warning: [options] bootstrap class path not set in conjunction with -source 1.3
+    1 warning
+    warning: [options] bootstrap class path not set in conjunction with -source 1.3
+    1 warning
+    warning: [options] bootstrap class path not set in conjunction with -source 1.3
+    1 warning
+    warning: [options] bootstrap class path not set in conjunction with -source 1.3
+    Note: org/octave/JDialogBox.java uses or overrides a deprecated API.
+    Note: Recompile with -Xlint:deprecation for details.
+    1 warning
+    Makefile:2848: warning: overriding commands for target `check'
+    Makefile:2410: warning: ignoring old commands for target `check'
+    Makefile:2565: warning: overriding commands for target `check'
+    Makefile:2153: warning: ignoring old commands for target `check'
+    Makefile:2565: warning: overriding commands for target `check'
+    Makefile:2153: warning: ignoring old commands for target `check'
+    Makefile:2848: warning: overriding commands for target `check'
+    Makefile:2410: warning: ignoring old commands for target `check'
+    root@ubuntu:/opt/octave-3.8.2# 
+
+8) Test Octave
+
+    (as root)
     make check
 
-You will get following test output at the end:
+    You will get following test output at the end:
+    
+    Summary:
+    
+      PASS     11547
+      FAIL         0
+      XFAIL        7
+      SKIPPED     50
+    
+    See the file test/fntests.log for additional details.
+    
+    Expected failures (listed as XFAIL above) are known bugs.
+    Please help improve Octave by contributing fixes for them.
+
+
 
 
 
