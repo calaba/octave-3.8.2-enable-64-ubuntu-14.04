@@ -242,7 +242,8 @@ For troubleshooting purposes if you wanna compare what is happening in the logs 
 5) In addition install manually standard libraries required by Octave:
 
     (as root)
-    sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev sudo         sudo apt-get -y install  libarpack2 libarpack2-dev
+    sudo apt-get -y install  libblas-dev liblapack-dev libqhull-dev libglpk-dev libqrupdate-dev libsuitesparse-dev 
+    sudo apt-get -y install  libarpack2 libarpack2-dev
     
 6) (workaround) If the above apt-get install libarpack2 libarpack2-dev doesn't work) - compile ARPACK from sources and install it. Get the '/x64-libs/_archives/ARPACK/ARPACK' sub-directory of this Repo - copy it to the /opt directory. Then  make & instal the ARPACK library as follows:
 
