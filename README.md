@@ -20,14 +20,14 @@ Basic procedure to compile Octave with 64-bit indexing (experimental switch --en
     
     It will download this repo to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole recompilation.
 
-5) Run 'all.sh' script in the terminal window.
+5) Run 'all.sh' script in the terminal window - you can redirect the stderr output of the all.sh script to file - i.e. 'all-err.log'.
 
     (start Terminal)
     sudo su
     cd /opt/octave-3.8.2-enable-64-ubuntu-14.04
-    ./all.sh
+    ./all.sh 2>all-err.log
     
-    It will execute in this order:
+    It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
