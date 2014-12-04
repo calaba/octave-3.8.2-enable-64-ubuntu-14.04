@@ -33,7 +33,7 @@ It will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
-This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 900MB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
+This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 1 GB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
     
     b) Script '2-compile-unpack-src.sh' - unpacks all sources of used libraries and sources of Octave 3.8.2 (currently latest).
        
@@ -237,7 +237,7 @@ For troubleshooting purposes if you wanna compare what is happening in the logs 
 
 3) Download Octave sources (ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz) and extract it to /opt directory (as root)
 
-4) Run the script 'sudo 1-compile-install-prereq.sh' - it will install required tools and libs for compilation. It might install too much ... (900MB)
+4) Run the script 'sudo 1-compile-install-prereq.sh' - it will install required tools and libs for compilation. It might install too much ... (1 GB)
 
 5) In addition install manually standard libraries required by Octave:
 
