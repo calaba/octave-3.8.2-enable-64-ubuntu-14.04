@@ -26,7 +26,7 @@ sudo apt-get -y install libfltk1.3-dev
 sudo apt-get -y install libfontconfig libfontconfig-dev
 
 # libs - if not present - some functions are not enabled and make check skips some tests
-sudo apt-get -y install libgraphicsmagick++1-dev llvm
+sudo apt-get -y install libgraphicsmagick++1-dev llvm llvm-dev
 
 # required compilation tools
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
