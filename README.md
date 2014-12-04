@@ -293,6 +293,68 @@ You will get following error/warning output:
 
 You will get following error/warning output:
 
+    root@ubuntu:/opt/octave-3.8.2# make > make.log
+    Makefile:2848: warning: overriding commands for target `check'
+    Makefile:2410: warning: ignoring old commands for target `check'
+    Makefile:2848: warning: overriding commands for target `check'
+    Makefile:2410: warning: ignoring old commands for target `check'
+    system/.libs/libsystem.a(system_libsystem_la-file-ops.o): In function `octave_tempnam(std::string const&, std::string const&, std::string&)':
+    /opt/octave-3.8.2/liboctave/system/file-ops.cc:664: warning: the use of `tempnam' is dangerous, better use `mkstemp'
+    parse-tree/lex.cc:3922:13: warning: unused parameter 'yyscanner' [-Wunused-parameter]
+     static void yy_fatal_error (yyconst char* msg , yyscan_t yyscanner)
+                 ^
+    parse-tree/lex.cc:4254:7: warning: unused parameter 'yyscanner' [-Wunused-parameter]
+     void *octave_alloc (yy_size_t  size , yyscan_t yyscanner)
+           ^
+    parse-tree/lex.cc:4259:7: warning: unused parameter 'yyscanner' [-Wunused-parameter]
+     void *octave_realloc  (void * ptr, yy_size_t  size , yyscan_t yyscanner)
+           ^
+    parse-tree/lex.cc:4271:6: warning: unused parameter 'yyscanner' [-Wunused-parameter]
+     void octave_free (void * ptr , yyscan_t yyscanner)
+          ^
+          
+    In file included from octave-value/ov-cx-diag.cc:32:0:
+    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
+    octave_value_list&, bool)':
+    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef typename DMT::element_type el_type;
+                                  ^
+    In file included from octave-value/ov-flt-cx-diag.cc:30:0:
+    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
+    octave_value_list&, bool)':
+    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef typename DMT::element_type el_type;
+                                      ^
+    In file included from octave-value/ov-flt-re-diag.cc:30:0:
+    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
+    octave_value_list&, bool)':
+    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef typename DMT::element_type el_type;
+                                      ^
+    octave-value/ov-perm.cc: In member function 'virtual bool octave_perm_matrix::save_ascii(std::ostream&)':
+    octave-value/ov-perm.cc:263:39: warning: typedef 'idx_int_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef octave_int<octave_idx_type> idx_int_type;
+                                           ^
+    octave-value/ov-perm.cc: In member function 'virtual bool octave_perm_matrix::load_ascii(std::istream&)':
+    octave-value/ov-perm.cc:280:39: warning: typedef 'idx_int_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef octave_int<octave_idx_type> idx_int_type;
+                                           ^
+    In file included from octave-value/ov-re-diag.cc:31:0:
+    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
+    octave_value_list&, bool)':
+    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
+       typedef typename DMT::element_type el_type;
+                                          ^
+
+   ....
+   
+   
+
+    ....
+    
+    
+
+
     make check
 
 You will get following test output at the end:
