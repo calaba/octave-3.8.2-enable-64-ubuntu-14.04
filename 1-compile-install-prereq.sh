@@ -32,7 +32,7 @@ sudo apt-get -y install libgraphicsmagick++1-dev llvm llvm-dev
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
 
 # to be able to compile documentation
-if [ "${octave64_config_extra}" =~ "--disable-docs" ]; then
+if [[ "${octave64_config_extra}" =~ "--disable-docs" ]]; then
     echo "Skipping installation of texlive, documentation won't be compiled ... "
 else
     sudo apt-get -y install texlive
