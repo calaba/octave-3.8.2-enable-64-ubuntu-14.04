@@ -442,13 +442,12 @@ You will get following error/warning output:
       SKIPPED     36
         See the file test/fntests.log for additional details.
       
-      (!!! if you are getting more SKIPPED tests - then you are missing some libraries for optional functionality !!!)
-    
     See the file test/fntests.log for additional details.
-    
     Expected failures (listed as XFAIL above) are known bugs.
     Please help improve Octave by contributing fixes for them.
 
+    The 36 SKIPPED test packages are all because of the experimental feature of LVVM based Just-In-Time compiling. 
+    If you are getting more SKIPPED tests - then you are missing some libraries for optional functionality!
 
 
 
