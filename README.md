@@ -435,11 +435,12 @@ You will get following error/warning output:
     You will get following test output at the end:
     
     Summary:
-    
-      PASS     11547
+
+      PASS     11561
       FAIL         0
       XFAIL        7
-      SKIPPED     50                
+      SKIPPED     36
+        See the file test/fntests.log for additional details.
       
       (!!! if you are getting more SKIPPED tests - then you are missing some libraries for optional functionality !!!)
     
