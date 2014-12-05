@@ -446,8 +446,11 @@ You will get following error/warning output:
     Expected failures (listed as XFAIL above) are known bugs.
     Please help improve Octave by contributing fixes for them.
 
-    The 36 SKIPPED test packages are all because of the experimental feature of LVVM based Just-In-Time compiling. 
+    The 36 SKIPPED test packages are all because of the experimental feature of LVVM based Just-In-Time (JIT) compiling. 
+    
     If you are getting more SKIPPED tests - then you are missing some libraries for optional functionality!
+    
+    REMARK: If you want to play with Just-In-Time compiling in Octave - use "--jit-enable" switch in ./configure script (use ./configure --help for more options and help). Some more details about compiling Octave with JIT - see following blog http://blogs.bu.edu/mhirsch/2013/12/compiling-octave-3-8/ .
 
 
 
