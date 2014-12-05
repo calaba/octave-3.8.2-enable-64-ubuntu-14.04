@@ -33,9 +33,9 @@ mv ${my_dir}/../src/SuiteSparse ${my_dir}/../src/SUITESPARSE
 
 echo "Copying Metis 4.0.3 under SuiteSparse as subdirectiry 'metis-4.0.1' ..."
 cd ${my_dir}
-rm -Rf ${my_dir}/../src/SUITESPARSE/metis-4.0.1
+rm -Rf ${my_dir}/../src/SUITESPARSE/metis-4.0*
 tar xvf ${my_dir}/metis-4.0.3.tar.gz -C ${my_dir}/../src/SUITESPARSE
-mv ${my_dir}/../src/SUITESPARSE/metis-4.0.3 ${my_dir}/../src/SUITESPARSE/metis-4.0.1
+mv ${my_dir}/../src/SUITESPARSE/metis-4.0.3 ${my_dir}/../src/SUITESPARSE/metis-4.0
 
 echo "Copying QHULL ...\n"
 cd ${my_dir}
