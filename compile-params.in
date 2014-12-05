@@ -11,17 +11,30 @@ export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
 export prefix64=/usr/local
 
 # -- additional options while configuring Octave source code compilation
+export octave64_config_extra=""
 # Full details - see: https://www.gnu.org/software/octave/doc/interpreter/Running-Configure-and-Make.html#Running-Configure-and-Make
 # -- 
 # -- Use: --enable-bounds-check to enable consistency checks for indexing operators 
 # -- 
-#         export octave64_config_extra="--enable-bounds-check"
+# export octave64_config_extra="${octave64_config_extra} --enable-bounds-check"
 # -- 
 # -- Use: --disable-docs to skip compilation of documentation (can speed-up the compilation, you do not have to install texlive) 
 # -- 
-#         export octave64_config_extra="--disable-docs"
+export octave64_config_extra="${octave64_config_extra} --disable-docs"
 # -- 
-export octave64_config_extra=""
+# -- Use: --enable-jit - (EXPERIMENTAL) enable Just-In-Time compilation of Octave inner loops
+# -- 
+# export octave64_config_extra="${octave64_config_extra} --enable-jit"
+# -- 
+# -- Use: --enable-openmp - (EXPERIMENTAL) use OpenMP SMP multi-threading 
+# -- 
+# export octave64_config_extra="${octave64_config_extra} --enable-openmp"
+# -- 
+# -- Use: --enable-link-all-dependencies - link Octave and its shared libraries with all dependencies, not just those immediately referenced (should not be needed on most systems) 
+# -- 
+# export octave64_config_extra="${octave64_config_extra} --enable-link-all-dependencies"
+# -- 
+# -- Others: use ./configure --help to explore other extra options
 
 # -- other directories for automated compilation
 export JAVA_HOME=/usr/lib/jvm/default-java
