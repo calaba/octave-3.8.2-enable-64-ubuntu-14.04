@@ -32,15 +32,14 @@ sudo apt-get -y install libgraphicsmagick++1-dev
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
 
 # to be able to compile documentation
-if [[ "${octave64_config_extra}" =~ "--disable-docs" ]]; then
-    echo "Skipping installation of texlive, documentation won't be compiled ... "
-else
-    sudo apt-get -y install texlive
-fi
+case "${octave64_config_extra}" in
+    *--disable-docs* ) echo "Skipping installation of texlive, documentation won't be compiled ..." ;;
+    * ) sudo apt-get -y install texlive ;;
+esac
 
 # JIT compiling - experimental feature by default disabled - to enable use --enable-jit
-if [[ "${octave64_config_extra}" =~ "--enable-jit" ]]; then
-    sudo apt-get -y llvm llvm-dev
-else
-    echo "Skipping installation of LVVM, JIT compiling disabled (experimental) ... "
-fi
+# maybe still some libs missing for JIT compilation enabling
+case "${octave64_config_extra}" in
+    *--enable-jit* ) sudo apt-get -y install llvm llvm-dev ;;
+    * ) echo "Skipping installation of LVVM, JIT compiling disabled (experimental) ...";;
+esac
