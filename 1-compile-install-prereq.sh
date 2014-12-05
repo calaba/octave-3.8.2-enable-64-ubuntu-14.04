@@ -26,7 +26,7 @@ sudo apt-get -y install libfltk1.3-dev
 sudo apt-get -y install libfontconfig libfontconfig-dev
 
 # libs - if not present - some functions are not enabled and make check skips some tests
-sudo apt-get -y install libgraphicsmagick++1-dev llvm llvm-dev
+sudo apt-get -y install libgraphicsmagick++1-dev 
 
 # required compilation tools
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
@@ -36,4 +36,11 @@ if [[ "${octave64_config_extra}" =~ "--disable-docs" ]]; then
     echo "Skipping installation of texlive, documentation won't be compiled ... "
 else
     sudo apt-get -y install texlive
+fi
+
+# JIT compiling - experimental feature by default disabled - to enable use --enable-jit
+if [[ "${octave64_config_extra}" =~ "--enable-jit" ]]; then
+    sudo apt-get -y llvm llvm-dev
+else
+    echo "Skipping installation of LVVM, JIT compiling disabled (experimental) ... "
 fi
