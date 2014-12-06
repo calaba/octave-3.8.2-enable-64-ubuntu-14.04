@@ -54,7 +54,7 @@ cp -f LAPACK/*.a ${prefix64}/lib
 #######################################################################################
 cp -Rf ${libs64src_mods}/ARPACK.mod/* ARPACK/
 cd ARPACK
-make lib
+make lib prefix64=${prefix64}
 ./make_so_lib.sh
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
