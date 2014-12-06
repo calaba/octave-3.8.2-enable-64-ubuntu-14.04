@@ -8,8 +8,11 @@
 my_dir="$(dirname "$0")"
 . "$my_dir/compile-params.in"
 
-# make lib directory - otherwise lib compilation creates lib file instead of files within lib directory
-mkdir ${LD_LIBRARY_PATH}
+# make shared lib directories - otherwise lib compilation creates lib / include / ... file instead of files within the directory
+mkdir ${prefix64}/lib
+mkdir ${prefix64}/include
+mkdir ${prefix64}/share
+mkdir ${prefix64}/bin
 
 # pre-compile 64bit indexing for libs
 cd ${libs64src}
@@ -50,7 +53,7 @@ cd ..
 # BLAS & LAPACK - installation
 #######################################################################################
 #  copy BLAS & LAPACK to LIB directory
-# sudo cp -f LAPACK/*.a ${prefix64}/lib
+sudo cp -f LAPACK/*.a ${prefix64}/lib
 
 #######################################################################################
 # ARPACK
