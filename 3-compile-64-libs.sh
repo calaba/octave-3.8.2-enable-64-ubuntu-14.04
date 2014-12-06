@@ -35,19 +35,22 @@ cp -Rf ${libs64src_mods}/LAPACK.mod/* LAPACK/
 cp -f ./BLAS/blas_LINUX.a ./LAPACK/libblas.a
 cd LAPACK
 # make clean
-make prefix64=${prefix64}
+make lib prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  echo
+  make blas_testing prefix64=${prefix64}
+  make lapack_testing prefix64=${prefix64}
 fi
+# installation 
+sudo make lapack_install prefix64=${prefix64}
 cd ..
 
 #######################################################################################
 # BLAS & LAPACK - installation
 #######################################################################################
 #  copy BLAS & LAPACK to LIB directory
-cp -f LAPACK/*.a ${prefix64}/lib
+# sudo cp -f LAPACK/*.a ${prefix64}/lib
 
 #######################################################################################
 # ARPACK
@@ -62,8 +65,8 @@ if [ "${octave64_compilation_test}" = "Y" ] ; then
   echo
 fi
 # Installation - might not be enough for ./configure to see ARPACK !
-cp -f libarpack.a ${prefix64}/lib
-cp -f libarpack.so ${prefix64}/lib
+sudo cp -f libarpack.a ${prefix64}/lib
+sudo cp -f libarpack.so ${prefix64}/lib
 cd ..
 
 ################################################################################$
@@ -86,12 +89,15 @@ cd ..
 #######################################################################################
 cp -Rf ${libs64src_mods}/SUITESPARSE.mod/* SUITESPARSE/
 cd SUITESPARSE
-make prefix64=${prefix64}
+# make prefix64=${prefix64}
 make library prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
-# add library compilation test here - if supported
-  echo
+# test of SUITESPARSE - if supported
+# test of metis-4.0 used inside SUITESPARSE
+  cd metis-4.0/Graphs
+  ./mtest *.mgraph
+  cd ../..
 fi
 # new version has already "make install" 
 sudo make install prefix64=${prefix64}
@@ -106,7 +112,7 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  echo
+  make test prefix64=${prefix64}
 fi
 # Installation
 sudo make install prefix64=${prefix64}
@@ -123,7 +129,7 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  echo
+  make check prefix64=${prefix64}
 fi
 # Installation
 sudo make install prefix64=${prefix64}
