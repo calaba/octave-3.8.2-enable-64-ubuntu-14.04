@@ -7,8 +7,8 @@ export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
 
 # -- installation directory for libraries needed for octave compilation in 64bit indexing mode
 
-#export prefix64=${octave64_gitroot}/x64-libs
-export prefix64=/usr/local
+export prefix64=${octave64_gitroot}/x64-libs
+#export prefix64=/usr/local
 
 # -- additional options while configuring Octave source code compilation
 export octave64_config_extra=""
@@ -20,7 +20,7 @@ export octave64_config_extra=""
 # -- 
 # -- Use: --disable-docs to skip compilation of documentation (can speed-up the compilation, you do not have to install texlive) 
 # -- 
-export octave64_config_extra="${octave64_config_extra} --disable-docs"
+# export octave64_config_extra="${octave64_config_extra} --disable-docs"
 # -- 
 # -- Use: --enable-jit - (EXPERIMENTAL) enable Just-In-Time compilation of Octave inner loops
 # -- 
