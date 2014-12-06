@@ -66,19 +66,19 @@ cp -f libarpack.a ${prefix64}/lib
 cp -f libarpack.so ${prefix64}/lib
 cd ..
 
-#######################################################################################
+################################################################################$
 # QRUPDATE
-#######################################################################################
+################################################################################$
 cp -Rf ${libs64src_mods}/QRUPDATE.mod/* QRUPDATE/
 cd QRUPDATE
-make lib solib
+make lib solib prefix64=${prefix64} libs64=${libs64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  make test
+  make test prefix64=${prefix64} libs64=${libs64}
 fi
 # Installation
-sudo make install
+sudo make install prefix64=${prefix64} libs64=${libs64}
 cd ..
 
 #######################################################################################
