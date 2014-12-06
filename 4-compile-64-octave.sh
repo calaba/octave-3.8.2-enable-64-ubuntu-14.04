@@ -32,5 +32,6 @@ make
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # test compiled sources by executing internal checks
+  echo "`date` : Executing Octave post-compilation tests (make check) ..."
   make check
 fi
