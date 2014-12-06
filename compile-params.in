@@ -36,6 +36,10 @@ export octave64_config_extra="${octave64_config_extra} --disable-docs"
 # -- 
 # -- Others: use ./configure --help to explore other extra options
 
+# to enable testing of compiled libraries and octave set following parameter to:
+# export octave64_compilation_test=Y
+export octave64_compilation_test=Y
+
 # -- other directories for automated compilation
 export JAVA_HOME=/usr/lib/jvm/default-java
 
@@ -69,6 +73,7 @@ echo ======== ENVIRONMENT VARIABLES FOR 'Octave with 64-bit indexing' COMPILATIO
 echo 
 echo "octave64_gitroot:         ${octave64_gitroot}"
 echo "prefix64:                 ${prefix64}"
+echo "octave64_compilation_test:${octave64_compilation_test}"
 echo "octave64_config_extra:    ${octave64_config_extra}"
 echo "JAVA_HOME:                ${JAVA_HOME}"
 echo "octave64src:              ${octave64src}"
