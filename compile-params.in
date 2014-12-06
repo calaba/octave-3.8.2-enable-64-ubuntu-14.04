@@ -69,5 +69,5 @@ export BLAS=${prefix64}/lib
 DEBUG_COMPILE=
 
 if [ "${DEBUG_COMPILE}" = "Y" ] ; then 
-. debug_show_env.sh
+. ./debug_show_env.sh
 fi
