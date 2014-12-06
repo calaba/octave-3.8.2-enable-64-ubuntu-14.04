@@ -19,8 +19,8 @@ echo "`date` : Compiling Octave source code with 64-bit indexing support..."
 ./4-compile-64-octave.sh > 4-compile-64-octave.log 2>&1
 
 cd ${octave64_gitroot}
-echo "`date` : Octave compilation finished, press a key to run octave ..."
-read  -p ":" keyinput -n 1
+echo "`date` : Octave compilation finished, press ENTER to run octave ..."
+read  -p ":" keyinput
 
 ./5-run_64bit_octave.sh 
 
