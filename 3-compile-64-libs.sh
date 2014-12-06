@@ -24,6 +24,7 @@ make
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 cd ..
 
@@ -38,6 +39,7 @@ make
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 cd ..
 
@@ -57,6 +59,7 @@ make lib
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 # Installation - might not be enough for ./configure to see ARPACK !
 cp -f libarpack.a ${prefix64}/lib
@@ -88,6 +91,7 @@ make library
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 # new version has already "make install" 
 sudo make install 
@@ -102,6 +106,7 @@ make
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 # Installation
 sudo make install
@@ -118,6 +123,7 @@ make
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo
 fi
 # Installation
 sudo make install
