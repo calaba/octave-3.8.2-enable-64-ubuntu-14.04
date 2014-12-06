@@ -6,9 +6,9 @@ FFLAGS=-fimplicit-none -O3 -funroll-loops -fdefault-integer-8 -Xlinker ${libs64}
 FPICFLAGS=-fPIC
 
 # BLAS library (only required for tests)
-BLAS=-lblas
+BLAS="-lblas"
 # LAPACK library (only required for tests)
-LAPACK=-llapack
+LAPACK="-llapack"
 
 # Library version
 VERSION=1.1
@@ -18,9 +18,9 @@ MAJOR=1
 LIBDIR=lib
 
 # Destination installation offset
-DESTDIR=${prefix64}
+DESTDIR=
 
-PREFIX=${prefix64}
+PREFIX=$(prefix64)
 
 # set default prefix to /usr/local
 #ifeq ($(strip $(PREFIX)),)
