@@ -20,7 +20,7 @@ cd ${libs64src}
 cp -Rf ${libs64src_mods}/BLAS.mod/* BLAS/
 cd BLAS
 # make clean
-make
+make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
@@ -35,7 +35,7 @@ cp -Rf ${libs64src_mods}/LAPACK.mod/* LAPACK/
 cp -f ./BLAS/blas_LINUX.a ./LAPACK/libblas.a
 cd LAPACK
 # make clean
-make
+make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
@@ -86,15 +86,15 @@ cd ..
 #######################################################################################
 cp -Rf ${libs64src_mods}/SUITESPARSE.mod/* SUITESPARSE/
 cd SUITESPARSE
-make
-make library
+make prefix64=${prefix64}
+make library prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
 # new version has already "make install" 
-sudo make install 
+sudo make install prefix64=${prefix64}
 cd ..
 
 #######################################################################################
@@ -102,14 +102,14 @@ cd ..
 #######################################################################################
 cp -Rf ${libs64src_mods}/QHULL.mod/* QHULL/
 cd QHULL
-make
+make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
 # Installation
-sudo make install
+sudo make install prefix64=${prefix64}
 cd ..
 
 #######################################################################################
@@ -119,14 +119,14 @@ cd ..
 # cp -Rf ${libs64src_mods}/GLPK.mod/* GLPK/
 cd GLPK
 ./configure prefix=${prefix64}
-make
+make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
 # Installation
-sudo make install
+sudo make install prefix64=${prefix64}
 cd ..
 
 #######################################################################################
