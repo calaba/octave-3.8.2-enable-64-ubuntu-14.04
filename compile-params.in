@@ -1,18 +1,46 @@
 #!/bin/sh
-
-# main parameters - various source and installation directories
-
+##########################################################################################################
+### MAIN COMPILATION PARAMETERS
+##########################################################################################################
 # -- git clone directory
+# -- the directory created by the command: 'git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git' wherever you run it
 export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
 
-# -- installation directory for libraries needed for octave compilation in 64bit indexing mode
-
+# -- installation directory for libraries needed for octave compilation & runtime in 64-bit indexing mode
 export prefix64=${octave64_gitroot}/x64-libs
 #export prefix64=/usr/local
 
-# -- additional options while configuring Octave source code compilation
+# to enable testing of compiled libraries set following parameter to:
+# export octave64_libs_compilation_test=Y
+export octave64_libs_compilation_test=N
+
+# to enable testing of compiled octave set following parameter to:
+# export octave64_compilation_test=Y
+export octave64_compilation_test=Y
+
+# -- other directories for automated compilation
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+##########################################################################################################
+### MAIN RUNTIME PARAMETERS
+##########################################################################################################
+
+# -- directories for loading of dynamic libraries
+# -- might need to be added to user prfofile
+# -- also maybe: have your system administrator add above DIR to `/etc/ld.so.conf'
+
+export LD_LIBRARY_PATH=${prefix64}/lib
+export LD_RUN_PATH=${prefix64}/lib
+
+##########################################################################################################
+### ADDITIONAL COMPILATION PARAMETERS
+##########################################################################################################
+
+### octave64_config_extra
+### Full details - see: https://www.gnu.org/software/octave/doc/interpreter/Running-Configure-and-Make.html#Running-Configure-and-Make
+### Others options than those listed below - use './configure --help' to explore
 export octave64_config_extra=""
-# Full details - see: https://www.gnu.org/software/octave/doc/interpreter/Running-Configure-and-Make.html#Running-Configure-and-Make
+###
 # -- 
 # -- Use: --enable-bounds-check to enable consistency checks for indexing operators 
 # -- 
@@ -34,39 +62,19 @@ export octave64_config_extra=""
 # -- 
 # export octave64_config_extra="${octave64_config_extra} --enable-link-all-dependencies"
 # -- 
-# -- Others: use ./configure --help to explore other extra options
 
-# to enable testing of compiled libraries set following parameter to:
-# export octave64_libs_compilation_test=Y
-export octave64_libs_compilation_test=N
-
-# to enable testing of compiled octave set following parameter to:
-# export octave64_compilation_test=Y
-export octave64_compilation_test=Y
-
-# -- other directories for automated compilation
-export JAVA_HOME=/usr/lib/jvm/default-java
-
-# -- Calculated variables from those above - ! do not change !
+##########################################################################################################
+### DERRIVED COMPILATION PARAMETERS - DO NOT CHANGE !!! Unless you know what you are doing.
+##########################################################################################################
 export octave64src=${octave64_gitroot}/octave-3.8.2
 export libs64src_archives=${octave64_gitroot}/x64-libs/_archives
 export libs64src_mods=${octave64_gitroot}/x64-libs/_mods
 export libs64src=${octave64_gitroot}/x64-libs/src
 export libs64="-L${prefix64}/lib"
 
-# -- directories for loading of dynamic libraries
-# -- might need to be added to user prfofile
-# -- also maybe: have your system administrator add above DIR to `/etc/ld.so.conf'
-
-export LD_LIBRARY_PATH=${prefix64}/lib
-export LD_RUN_PATH=${prefix64}/lib
-
-# -- locations of respective libraries - not really used as of now
-# export SUITESPARSE=${prefix64}/lib
-# export QHULL=${prefix64}/lib
-# export ARPACK=${prefix64}/lib
-# export LAPACK=${prefix64}/lib
-# export BLAS=${prefix64}/lib
+##########################################################################################################
+### DEBUGGING PARAMETERS 
+##########################################################################################################
 
 # to enable debugging of compilation process - extra log outpu - set:
 #  DEBUG_COMPILE=Y
