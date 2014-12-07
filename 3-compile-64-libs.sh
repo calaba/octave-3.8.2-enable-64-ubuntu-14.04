@@ -25,7 +25,7 @@ cd BLAS
 # make clean
 make prefix64=${prefix64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
@@ -40,7 +40,7 @@ cd LAPACK
 # make clean
 make lib prefix64=${prefix64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   make blas_testing prefix64=${prefix64}
   make lapack_testing prefix64=${prefix64}
@@ -63,7 +63,7 @@ cd ARPACK
 make lib prefix64=${prefix64}
 ./make_so_lib.sh
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
@@ -79,7 +79,7 @@ cp -Rf ${libs64src_mods}/QRUPDATE.mod/* QRUPDATE/
 cd QRUPDATE
 make lib solib prefix64=${prefix64} libs64=${libs64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   make test prefix64=${prefix64} libs64=${libs64}
 fi
@@ -95,7 +95,7 @@ cd SUITESPARSE
 # make prefix64=${prefix64}
 make library prefix64=${prefix64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # test of SUITESPARSE - if supported
 # test of metis-4.0 used inside SUITESPARSE
   cd metis-4.0/Graphs
@@ -113,7 +113,7 @@ cp -Rf ${libs64src_mods}/QHULL.mod/* QHULL/
 cd QHULL
 make prefix64=${prefix64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   make test prefix64=${prefix64}
 fi
@@ -130,7 +130,7 @@ cd GLPK
 ./configure prefix=${prefix64}
 make prefix64=${prefix64}
 # test compilation if requested
-if [ "${octave64_compilation_test}" = "Y" ] ; then 
+if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   make check prefix64=${prefix64}
 fi
