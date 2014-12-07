@@ -62,11 +62,11 @@ export LD_LIBRARY_PATH=${prefix64}/lib
 export LD_RUN_PATH=${prefix64}/lib
 
 # -- locations of respective libraries - not really used as of now
-export SUITESPARSE=${prefix64}/lib
-export QHULL=${prefix64}/lib
-export ARPACK=${prefix64}/lib
-export LAPACK=${prefix64}/lib
-export BLAS=${prefix64}/lib
+# export SUITESPARSE=${prefix64}/lib
+# export QHULL=${prefix64}/lib
+# export ARPACK=${prefix64}/lib
+# export LAPACK=${prefix64}/lib
+# export BLAS=${prefix64}/lib
 
 # to enable debugging of compilation process - extra log outpu - set:
 #  DEBUG_COMPILE=Y
