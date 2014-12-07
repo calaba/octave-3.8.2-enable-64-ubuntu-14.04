@@ -4,7 +4,7 @@
 ##########################################################################################################
 # -- git clone directory
 # -- the directory created by the command: 'git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git' wherever you run it
-export octave64_gitroot=/opt/octave-3.8.2-enable-64-ubuntu-14.04
+export octave64_gitroot=~/octave-3.8.2-enable-64-ubuntu-14.04
 
 # -- installation directory for libraries needed for octave compilation & runtime in 64-bit indexing mode
 export prefix64=${octave64_gitroot}/x64-libs
