@@ -25,7 +25,7 @@
 # | other than your home directory.      |
 # %--------------------------------------%
 #
-home = ${prefix64}/src/ARPACK
+home = ${octave64_gitroot}/x64-libs/src/ARPACK
 #
 #  %--------------------------------------%
 #  | The platform identifier to suffix to |
@@ -57,9 +57,9 @@ DIRS         = $(UTILdir) $(SRCdir)
 # | The name of the libraries to be created/linked to |
 # %---------------------------------------------------%
 #
-ARPACKLIB  = $(home)/libarpack.a
-LAPACKLIB = 
-BLASLIB = 
+ARPACKLIB  = ${prefix64}/lib/libarpack.a
+LAPACKLIB = ${prefix64}/lib/liblapack.a
+BLASLIB = ${prefix64}/lib/libblas.a
 #
 ALIBS =  $(ARPACKLIB) $(LAPACKLIB) $(BLASLIB) 
 #
@@ -104,7 +104,7 @@ ALIBS =  $(ARPACKLIB) $(LAPACKLIB) $(BLASLIB)
 FC      = gfortran
 FFLAGS	= -fPIC -fdefault-integer-8
 
-LDFLAGS = 
+LDFLAGS = ${libs64}
 CD      = cd
 
 ECHO    = echo
