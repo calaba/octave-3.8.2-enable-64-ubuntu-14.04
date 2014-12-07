@@ -36,7 +36,11 @@ export octave64_config_extra=""
 # -- 
 # -- Others: use ./configure --help to explore other extra options
 
-# to enable testing of compiled libraries and octave set following parameter to:
+# to enable testing of compiled libraries set following parameter to:
+# export octave64_libs_compilation_test=Y
+export octave64_libs_compilation_test=N
+
+# to enable testing of compiled octave set following parameter to:
 # export octave64_compilation_test=Y
 export octave64_compilation_test=Y
 
