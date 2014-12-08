@@ -116,7 +116,7 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  make test prefix64=${prefix64}
+  make test prefix64=${prefix64} LD_LIBRARY_PATH=${prefix64}/lib
 fi
 # Installation
 sudo make install prefix64=${prefix64}
