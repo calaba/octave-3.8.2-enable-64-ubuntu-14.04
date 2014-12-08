@@ -9,10 +9,10 @@ my_dir="$(dirname "$0")"
 . "$my_dir/compile-params.in"
 
 # make shared lib directories - otherwise lib compilation creates lib / include / ... file instead of files within the directory
-mkdir ${prefix64}/lib
-mkdir ${prefix64}/include
-mkdir ${prefix64}/share
-mkdir ${prefix64}/bin
+sudo mkdir ${prefix64}/lib
+sudo mkdir ${prefix64}/include
+sudo mkdir ${prefix64}/share
+sudo mkdir ${prefix64}/bin
 
 # pre-compile 64bit indexing for libs
 cd ${libs64src}
@@ -60,8 +60,8 @@ sudo cp -f LAPACK/*.a ${prefix64}/lib
 #######################################################################################
 cp -Rf ${libs64src_mods}/ARPACK.mod/* ARPACK/
 cd ARPACK
-make lib prefix64=${prefix64} octave64_gitroot=${octave64_gitroot} libs64=${libs64}
-./make_so_lib.sh
+sudo make lib prefix64=${prefix64} octave64_gitroot=${octave64_gitroot} libs64=${libs64}
+sudo ./make_so_lib.sh
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
