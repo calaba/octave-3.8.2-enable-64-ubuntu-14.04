@@ -3,7 +3,7 @@
 ### MAIN COMPILATION PARAMETERS
 ##########################################################################################################
 # -- git clone directory
-# -- the directory created by the command: 'git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git' wherever you run it
+# -- the directory created by the command: 'cd ~ && git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git' wherever you run it
 export octave64_gitroot=${HOME}/octave-3.8.2-enable-64-ubuntu-14.04
 
 # -- installation directory for libraries needed for octave compilation & runtime in 64-bit indexing mode
