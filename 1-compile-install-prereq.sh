@@ -31,6 +31,9 @@ sudo apt-get -y install libgraphicsmagick++1-dev
 # required compilation tools
 sudo apt-get -y install pkg-config tcl-dev bison flex g++ gfortran cmake gperf 
 
+# reguired if you wanna do 'make dist'
+sudo apt-get -y install mercurial
+
 # to be able to compile documentation
 case "${octave64_config_extra}" in
     *--disable-docs* ) echo "Skipping installation of texlive, documentation won't be compiled ..." ;;
