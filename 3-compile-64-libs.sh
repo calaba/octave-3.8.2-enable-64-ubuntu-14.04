@@ -27,7 +27,7 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  echo
+  echo BLAS lib testing not supported
 fi
 cd ..
 
@@ -67,7 +67,7 @@ sudo ./make_so_lib.sh ${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
-  echo
+  ARPACK lib testing not supported
 fi
 cd ..
 
@@ -96,7 +96,9 @@ make library prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # test of SUITESPARSE - if supported
+  echo SUITESPARSE lib testing not supported
 # test of metis-4.0 used inside SUITESPARSE
+  echo "Testing metis-4.0 in SUITESPARSE ..."
   cd metis-4.0/Graphs
   ./mtest *.mgraph
   cd ../..
