@@ -60,16 +60,15 @@ sudo cp -f LAPACK/*.a ${prefix64}/lib
 #######################################################################################
 cp -Rf ${libs64src_mods}/ARPACK.mod/* ARPACK/
 cd ARPACK
+# Compile directly into install directory $prefix64/lib
 sudo make lib prefix64=${prefix64} octave64_gitroot=${octave64_gitroot} libs64=${libs64}
-sudo ./make_so_lib.sh
+# Create SO-Lib in install directory $prefix64/lib
+sudo ./make_so_lib.sh ${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo
 fi
-# Installation - might not be enough for ./configure to see ARPACK !
-sudo cp -f libarpack.a ${prefix64}/lib
-sudo cp -f libarpack.so ${prefix64}/lib
 cd ..
 
 ################################################################################$
