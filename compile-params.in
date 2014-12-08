@@ -7,8 +7,10 @@
 export octave64_gitroot=${HOME}/octave-3.8.2-enable-64-ubuntu-14.04
 
 # -- installation directory for libraries needed for octave compilation & runtime in 64-bit indexing mode
-export prefix64=${octave64_gitroot}/x64-libs
-#export prefix64=/usr/local
+# use /usr/local as standard installation dir for libs ... 
+export prefix64=/usr/local
+# or use your own directory to get libs compiled and installed to -> i.e. x64-libs sub-directory 
+#export prefix64=${octave64_gitroot}/x64-libs
 
 # to enable testing of compiled libraries set following parameter to:
 # export octave64_libs_compilation_test=Y
