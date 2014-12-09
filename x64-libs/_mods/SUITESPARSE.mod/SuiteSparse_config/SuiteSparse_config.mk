@@ -86,7 +86,7 @@ MV = mv -f
 
 # Fortran compiler (not required for 'make' or 'make library')
 F77 = gfortran
-F77FLAGS = $(FFLAGS) -O
+# F77FLAGS = $(FFLAGS) -O
 F77FLAGS = $(FFLAGS) -O -fPIC -fdefault-integer-8
 F77LIB =
 
@@ -101,7 +101,6 @@ F77LIB =
 
 INSTALL_LIB = ${prefix64}/lib
 INSTALL_INCLUDE = ${prefix64}/include
-
 
 # Which version of MAKE you are using (default is "make")
 # MAKE = make
