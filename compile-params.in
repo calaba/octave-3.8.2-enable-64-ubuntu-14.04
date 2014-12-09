@@ -14,7 +14,7 @@ export prefix64=/usr/local
 
 # to enable testing of compiled libraries set following parameter to:
 # export octave64_libs_compilation_test=Y
-export octave64_libs_compilation_test=N
+export octave64_libs_compilation_test=Y
 
 # to enable testing of compiled octave set following parameter to:
 # export octave64_compilation_test=Y
