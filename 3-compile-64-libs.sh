@@ -46,8 +46,8 @@ make lib blaslib prefix64=${prefix64}
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo "`date` : Testing LAPACK ..."
-  # required - otherwise tetsing of lapck will end with segementation fault !
-  ulimit -s 65000
+  # required - otherwise testing of lapack will end with segementation fault !
+  ulimit -s unlimited
   # do the testing
   make blas_testing prefix64=${prefix64}
   make lapack_testing prefix64=${prefix64}
