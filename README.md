@@ -228,6 +228,8 @@ While working on this Octave compilation challenge I had to research a lot of is
 
 8) http://simon.bonners.ca/blog///blog5.php/installing-arpack-1-0-8-in-octave-for-ub-10
 
+9) http://blog.csdn.net/tiandaonuaa/article/details/6376882
+
 Octave Sources compilation 32-bit indexing mode (default):
 ==========================================================
 
