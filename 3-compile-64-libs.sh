@@ -20,6 +20,7 @@ cd ${libs64src}
 #######################################################################################
 # BLAS
 #######################################################################################
+echo "`date` : Compiling BLAS ..."
 cp -Rf ${libs64src_mods}/BLAS.mod/* BLAS/
 cd BLAS
 # make clean
@@ -27,6 +28,7 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing BLAS ..."
   echo BLAS lib testing not supported
 fi
 cd ..
@@ -34,18 +36,24 @@ cd ..
 #######################################################################################
 # LAPACK
 #######################################################################################
+echo "`date` : Compiling LAPACK ..."
 cp -Rf ${libs64src_mods}/LAPACK.mod/* LAPACK/
 cp -f ./BLAS/blas_LINUX.a ./LAPACK/libblas.a
 cd LAPACK
 # make clean
-make lib prefix64=${prefix64}
+make lib blaslib prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing LAPACK ..."
+  # required - otherwise tetsing of lapck will end with segementation fault !
+  ulimit -s 65000
+  # do the testing
   make blas_testing prefix64=${prefix64}
   make lapack_testing prefix64=${prefix64}
 fi
 # installation 
+echo "`date` : Installing BLAS & LAPACK ..."
 sudo make lapack_install prefix64=${prefix64}
 cd ..
 
@@ -58,6 +66,7 @@ sudo cp -f LAPACK/*.a ${prefix64}/lib
 #######################################################################################
 # ARPACK
 #######################################################################################
+echo "`date` : Compiling & installing ARPACK ..."
 cp -Rf ${libs64src_mods}/ARPACK.mod/* ARPACK/
 cd ARPACK
 # Compile directly into install directory $prefix64/lib
@@ -67,6 +76,7 @@ sudo ./make_so_lib.sh ${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing ARPACK ..."
   ARPACK lib testing not supported
 fi
 cd ..
@@ -74,21 +84,25 @@ cd ..
 ################################################################################$
 # QRUPDATE
 ################################################################################$
+echo "`date` : Compiling QRUPDATE ..."
 cp -Rf ${libs64src_mods}/QRUPDATE.mod/* QRUPDATE/
 cd QRUPDATE
 make lib solib prefix64=${prefix64} libs64=${libs64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing QRUPDATE ..."
   make test prefix64=${prefix64} libs64=${libs64}
 fi
 # Installation
+echo "`date` : Installing QRUPDATE ..."
 sudo make install prefix64=${prefix64} libs64=${libs64}
 cd ..
 
 #######################################################################################
 # SUITESPARSE
 #######################################################################################
+echo "`date` : Compiling SuiteSparse ..."
 cp -Rf ${libs64src_mods}/SUITESPARSE.mod/* SUITESPARSE/
 cd SUITESPARSE
 # make prefix64=${prefix64}
@@ -96,13 +110,16 @@ make library prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # test of SUITESPARSE - if supported
+  echo "`date` : Testing SuiteSparse ..."
   echo SUITESPARSE lib testing not supported
 # test of metis-4.0 used inside SUITESPARSE
-  echo "Testing metis-4.0 in SUITESPARSE ..."
+  echo "Testing metis-4.0 in SuiteSparse ..."
   cd metis-4.0/Graphs
   ./mtest *.mgraph
   cd ../..
 fi
+
+echo "`date` : Installing SuiteSparse ..."
 # new version has already "make install" 
 sudo make install prefix64=${prefix64}
 cd ..
@@ -110,21 +127,25 @@ cd ..
 #######################################################################################
 # QHULL
 #######################################################################################
+echo "`date` : Compiling QHULL ..."
 cp -Rf ${libs64src_mods}/QHULL.mod/* QHULL/
 cd QHULL
 make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing QHULL ..."
   make test prefix64=${prefix64} LD_LIBRARY_PATH=${prefix64}/lib
 fi
 # Installation
+echo "`date` : Installing QHULL ..."
 sudo make install prefix64=${prefix64}
 cd ..
 
 #######################################################################################
 #  GLPK
 #######################################################################################
+echo "`date` : Compiling GLPK ..."
 # no GLPK modifications
 # cp -Rf ${libs64src_mods}/GLPK.mod/* GLPK/
 cd GLPK
@@ -133,9 +154,11 @@ make prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
+  echo "`date` : Testing GLPK ..."
   make check prefix64=${prefix64}
 fi
 # Installation
+echo "`date` : Installing GLPK ..."
 sudo make install prefix64=${prefix64}
 cd ..
 
