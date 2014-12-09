@@ -125,11 +125,8 @@ INSTALL_INCLUDE = ${prefix64}/include
 
 # This is probably slow ... it might connect to the Standard Reference BLAS:
   
-#  BLAS = -lblas -lgfortran
-BLAS = -L${prefix64}/lib -lblas -lgfortran
-
-#  LAPACK = -llapack
-LAPACK = -L${prefix64}/lib -llapack
+BLAS = -lblas -lgfortran
+LAPACK = -llapack
 
 # MKL 
 # BLAS = -Wl,--start-group $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_core.a $(MKLROOT)/lib/intel64/libmkl_intel_thread.a -Wl,--end-group -lpthread -lm
