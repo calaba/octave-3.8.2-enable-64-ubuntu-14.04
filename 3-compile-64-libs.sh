@@ -110,13 +110,79 @@ make library prefix64=${prefix64}
 # test compilation if requested
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # test of SUITESPARSE - if supported
-  echo "`date` : Testing SuiteSparse ..."
-  echo SUITESPARSE lib testing not supported
+  echo "`date` : Testing SuiteSparse - AMD ..."
+  cd AMD/Demo
+  make
+  cd ../..
+  
+  echo "`date` : Testing SuiteSparse - CAMD ..."
+  cd CAMD/Demo
+  make
+  cd ../..
+  
+  echo "`date` : Testing SuiteSparse - CCOLAMD ..."
+  cd CCOLAMD/Demo
+  make
+  cd ../..
+  
+  echo "`date` : Testing SuiteSparse - CHOLMOD ..."
+  cd CHOLMOD/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - COLAMD ..."
+  cd COLAMD/Demo
+  make
+  cd ../..
+  
+  echo "`date` : Testing SuiteSparse - CSparse ..."
+  cd CSparse/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - CXSparse ..."
+  cd CXSparse/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - GPUQREngine ..."
+  cd GPUQREngine/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - KLU ..."
+  cd KLU/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - LDL ..."
+  cd LDL/Demo
+  make
+  cd ../..
+  
+  echo "`date` : Testing SuiteSparse - RBio ..."
+  cd RBio/Demo
+  make
+  cd ../..
+
+  echo "`date` : Testing SuiteSparse - SPQR ..."
+  cd SPQR/Demo
+  make
+  cd ../..
+
+
+  echo "`date` : Testing SuiteSparse - UMFPACK ..."
+  cd UMFPACK/Demo
+  make
+  cd ../..
+
 # test of metis-4.0 used inside SUITESPARSE
   echo "Testing metis-4.0 in SuiteSparse ..."
   cd metis-4.0/Graphs
   ./mtest *.mgraph
   cd ../..
+  
+  echo "`date` : Testing SuiteSparse - END!"
 fi
 
 echo "`date` : Installing SuiteSparse ..."
