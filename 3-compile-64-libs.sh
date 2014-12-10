@@ -145,11 +145,6 @@ if [ "${octave64_libs_compilation_test}" = "Y" ] ; then
   make
   cd ../..
 
-  echo "`date` : Testing SuiteSparse - GPUQREngine ..."
-  cd GPUQREngine/Demo
-  make
-  cd ../..
-
   echo "`date` : Testing SuiteSparse - KLU ..."
   cd KLU/Demo
   make
@@ -160,11 +155,6 @@ if [ "${octave64_libs_compilation_test}" = "Y" ] ; then
   make
   cd ../..
   
-  echo "`date` : Testing SuiteSparse - RBio ..."
-  cd RBio/Demo
-  make
-  cd ../..
-
   echo "`date` : Testing SuiteSparse - SPQR ..."
   cd SPQR/Demo
   make
