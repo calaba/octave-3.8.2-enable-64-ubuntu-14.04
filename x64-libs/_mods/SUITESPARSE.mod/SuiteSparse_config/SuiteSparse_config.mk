@@ -242,7 +242,7 @@ METIS = ../../metis-4.0/libmetis.a
 #               included in UMFPACK_CONFIG, then UMFPACK  does not rely on
 #               CHOLMOD, CAMD, CCOLAMD, COLAMD, and METIS.
 
-UMFPACK_CONFIG =
+UMFPACK_CONFIG = -DLONGBLAS='long long'
 
 # uncomment this line to compile UMFPACK without CHOLMOD:
 # UMFPACK_CONFIG = -DNCHOLMOD
