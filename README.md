@@ -230,6 +230,8 @@ While working on this Octave compilation challenge I had to research a lot of is
 
 9) http://blog.csdn.net/tiandaonuaa/article/details/6376882
 
+10) http://wiki.chpc.ac.za/howto:compiling_octave
+
 Octave Sources compilation 32-bit indexing mode (default):
 ==========================================================
 
