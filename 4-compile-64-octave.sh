@@ -18,12 +18,24 @@ cd ${octave64src}
 cp -Rf ${libs64src_mods}/octave-src/* ./
 
 # configure compilation
+
+# getting compilation error if cholmod is found and used (seems colamd and ccolamd also use cholmod ... same error)
+# ./configure \
+# --with-colamd="-lcolamd -lsuitesparseconfig -lrt" \
+# --with-colamd-includedir=${prefix64}/include --with-colamd-libdir=${prefix64}/lib \
+# --with-ccolamd="-lccolamd -lsuitesparseconfig -lrt" \
+# --with-ccolamd-includedir=${prefix64}/include --with-ccolamd-libdir=${prefix64}/lib \
+# --with-cholmod="-lcholmod -lsuitesparseconfig -lrt" \
+# --with-cholmod-includedir=${prefix64}/include --with-cholmod-libdir=${prefix64}/lib \
+# --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
+# --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
+# ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
+
+# This works - fine - only 3 WARNINGS in configure (colamd, ccolamd, cholmod not found) 
+# - compilation ok and tests with results PASS 11543, FAIL 0, XFAIL 7, SKIPPED 54
 ./configure \
---with-colamd="-lcolamd -lsuitesparseconfig -lrt" \
 --with-colamd-includedir=${prefix64}/include --with-colamd-libdir=${prefix64}/lib \
---with-ccolamd="-lccolamd -lsuitesparseconfig -lrt" \
 --with-ccolamd-includedir=${prefix64}/include --with-ccolamd-libdir=${prefix64}/lib \
---with-cholmod="-lcholmod -lsuitesparseconfig -lrt" \
 --with-cholmod-includedir=${prefix64}/include --with-cholmod-libdir=${prefix64}/lib \
 --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
 --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
