@@ -201,7 +201,7 @@ make prefix64=${prefix64}
 if [ "${octave64_libs_compilation_test}" = "Y" ] ; then 
 # add library compilation test here - if supported
   echo "`date` : Testing QHULL ..."
-  make test prefix64=${prefix64} LD_LIBRARY_PATH=${prefix64}/lib
+  export LD_LIBRARY_PATH=$PWD/lib:$LD_LIBRARY_PATH ; make test prefix64=${prefix64}
 fi
 # Installation
 echo "`date` : Installing QHULL ..."
