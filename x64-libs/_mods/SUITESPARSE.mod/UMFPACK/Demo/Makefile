@@ -28,7 +28,8 @@ ifeq (,$(findstring -DNCHOLMOD, $(UMFPACK_CONFIG)))
             # CHOLMOD and COLAMD are available
             CONFIG1 =
             LIB_WITH_CHOLMOD = ../../CHOLMOD/Lib/libcholmod.a \
-                ../../COLAMD/Lib/libcolamd.a
+                ../../COLAMD/Lib/libcolamd.a \
+                ../../CAMD/Lib/libcamd.a ../../AMD/Lib/libamd.a
             # check if METIS is requested and available
             ifeq (,$(findstring -DNPARTITION, $(CHOLMOD_CONFIG)))
                 # METIS is requested.  See if it is available
