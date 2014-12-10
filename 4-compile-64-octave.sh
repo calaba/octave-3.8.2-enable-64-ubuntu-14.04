@@ -20,12 +20,13 @@ cp -Rf ${libs64src_mods}/octave-src/* ./
 # configure compilation
 ./configure \
 --with-colamd="-lcolamd -lsuitesparseconfig -lrt" \
---with-colamd-includedir=${prefix64}/include --with-colamd-libdir=${prefix64}/l$
+--with-colamd-includedir=${prefix64}/include --with-colamd-libdir=${prefix64}/lib \
 --with-ccolamd="-lccolamd -lsuitesparseconfig -lrt" \
---with-ccolamd-includedir=${prefix64}/include --with-ccolamd-libdir=${prefix64}$
+--with-ccolamd-includedir=${prefix64}/include --with-ccolamd-libdir=${prefix64}/lib \
 --with-cholmod="-lcholmod -lsuitesparseconfig -lrt" \
---with-cholmod-includedir=${prefix64}/include --with-cholmod-libdir=${prefix64}$
+--with-cholmod-includedir=${prefix64}/include --with-cholmod-libdir=${prefix64}/lib \
 --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
+--with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
 ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
 
 # build 
