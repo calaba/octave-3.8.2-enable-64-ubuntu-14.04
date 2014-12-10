@@ -221,10 +221,9 @@ METIS_PATH = ../../metis-4.0
 METIS = ../../metis-4.0/libmetis.a
 
 # disable the GPL-incompatible METIS library
-# CHOLMOD_CONFIG = -DNPARTITION 
-# SPQR_CONFIG = -DNPARTITION 
-# METIS_PATH = 
-# METIS = 
+METIS_PATH = 
+METIS = 
+
 
 #------------------------------------------------------------------------------
 # UMFPACK configuration:
@@ -242,10 +241,8 @@ METIS = ../../metis-4.0/libmetis.a
 #               included in UMFPACK_CONFIG, then UMFPACK  does not rely on
 #               CHOLMOD, CAMD, CCOLAMD, COLAMD, and METIS.
 
-UMFPACK_CONFIG = -DLONGBLAS='long long'
-
-# uncomment this line to compile UMFPACK without CHOLMOD:
-# UMFPACK_CONFIG = -DNCHOLMOD
+# UMFPACK_CONFIG =
+UMFPACK_CONFIG = -DLONGBLAS='long int' -DNCHOLMOD
 
 #------------------------------------------------------------------------------
 # CHOLMOD configuration
@@ -284,10 +281,9 @@ UMFPACK_CONFIG = -DLONGBLAS='long long'
 # -DNSUNPERF        for Solaris only.  If defined, do not use the Sun
 #                   Performance Library
 
-CHOLMOD_CONFIG = $(GPU_CONFIG)
-
 # uncomment this line to compile CHOLMOD without METIS:
 # CHOLMOD_CONFIG = -DNPARTITION
+CHOLMOD_CONFIG = $(GPU_CONFIG) -DNPARTITION -DLONGBLAS='long int'
 
 #------------------------------------------------------------------------------
 # SuiteSparseQR configuration:
@@ -300,7 +296,9 @@ CHOLMOD_CONFIG = $(GPU_CONFIG)
 # -DHAVE_TBB        enable the use of Intel's Threading Building Blocks (TBB)
 
 # default, without timing, without TBB:
-SPQR_CONFIG = $(GPU_CONFIG)
+# uncomment this line to compile SPQR without METIS:
+# SPQR_CONFIG = -DNPARTITION
+SPQR_CONFIG = $(GPU_CONFIG) -DNPARTITION
 # with TBB:
 # SPQR_CONFIG = -DHAVE_TBB
 
