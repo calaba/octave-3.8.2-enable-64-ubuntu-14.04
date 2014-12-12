@@ -6,7 +6,7 @@ my_dir="$(dirname "$0")"
 
 mkdir ${libs64src}
 cd ${libs64src_archives}
-./_extract_src_from_archives.sh
+./_extract_src_from_archives.sh ${octave64_SS_version}
 cd ${my_dir}
 
 rm -Rf ${octave64src}
