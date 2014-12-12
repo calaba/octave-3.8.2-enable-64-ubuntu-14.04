@@ -4,6 +4,7 @@ echo ======== ENVIRONMENT VARIABLES FOR 'Octave with 64-bit indexing' COMPILATIO
 echo 
 echo "octave64_gitroot:         ${octave64_gitroot}"
 echo "prefix64:                 ${prefix64}"
+echo "octave64_SS_version:      ${octave64_SS_version}"
 echo "octave64_compilation_test:${octave64_compilation_test}"
 echo "octave64_config_extra:    ${octave64_config_extra}"
 echo "JAVA_HOME:                ${JAVA_HOME}"
