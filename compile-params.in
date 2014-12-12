@@ -15,9 +15,9 @@ export prefix64=/usr/local
 # SuiteSparse version for compilation - currently only 4.2.1 and 4.4.1 (latest) supported
 # In SuiteSparse 4.3.x there was a interface API change causing octave compilation error in CHOLMOD and thus also COLAMD and CCOLAMD
 # Octave can be compiled with 4.4.1 and testing goes well (only 54 SKIPPED tests, 0 FAILED) but cannot leverage those libs
-# export octave_SS_version=4.2.1
-# export octave_SS_version=4.4.1
-export octave_SS_version=4.2.1
+# export octave64_SS_version=4.2.1
+# export octave64_SS_version=4.4.1
+export octave64_SS_version=4.2.1
 
 # to enable testing of compiled libraries set following parameter to:
 # export octave64_libs_compilation_test=Y
