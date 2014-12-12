@@ -25,17 +25,28 @@ rm -Rf ${my_dir}/../src/GLPK
 tar xvf ${my_dir}/glpk*.tar.gz -C ${my_dir}/../src/
 mv ${my_dir}/../src/glpk-4.55 ${my_dir}/../src/GLPK
 
-echo "Copying SuiteSparse ...\n"
+echo "Copying SuiteSparse (version ${octave64_SS_version}) ...\n"
 cd ${my_dir}
 rm -Rf ${my_dir}/../src/SUITESPARSE
-tar xvf ${my_dir}/SuiteSparse*.tar.gz -C ${my_dir}/../src/
+tar xvf ${my_dir}/SS-${octave64_SS_version}/SuiteSparse-${octave64_SS_version}.tar.gz -C ${my_dir}/../src/
 mv ${my_dir}/../src/SuiteSparse ${my_dir}/../src/SUITESPARSE
 
-echo "Copying Metis 4.0.3 under SuiteSparse as subdirectiry 'metis-4.0.1' ..."
+# install Metis 4.0.x for SuiteSparse
 cd ${my_dir}
 rm -Rf ${my_dir}/../src/SUITESPARSE/metis-4.0*
-tar xvf ${my_dir}/metis-4.0.3.tar.gz -C ${my_dir}/../src/SUITESPARSE
-mv ${my_dir}/../src/SUITESPARSE/metis-4.0.3 ${my_dir}/../src/SUITESPARSE/metis-4.0
+
+case ${octave64_SS_version} in
+# uses modified metis 4.0.1 to get it compiled
+    4.2.1 ) echo "Copying Metis 4.0.1 under SuiteSparse as sub-directory 'metis-4.0' ..." ; \
+            tar xvf ${my_dir}/SS-${octave64_SS_version}/metis-4.0.1.tar.gz -C ${my_dir}/../src/SUITESPARSE \ 
+            ;; 
+# uses metis-4.0.3 - no modifications needed to get it compiled
+    4.4.2 ) echo "Copying Metis 4.0.3 under SuiteSparse as sub-directory 'metis-4.0' ..." ; \
+            tar xvf ${my_dir}/SS-${octave64_SS_version}/metis-4.0.3.tar.gz -C ${my_dir}/../src/SUITESPARSE \ 
+            mv ${my_dir}/../src/SUITESPARSE/metis-4.0.3 ${my_dir}/../src/SUITESPARSE/metis-4.0 \
+            ;;
+    * ) echo "SuiteSparse version ${octave64_SS_version} - not tested/supported ... "; exit 1 ;;
+esac
 
 echo "Copying QHULL ...\n"
 cd ${my_dir}
