@@ -34,7 +34,7 @@ case ${octave64_SS_version} in
               ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib" ;;
 # getting compilation error if cholmod is specified (seems colamd and ccolamd also use cholmod ... same error)
 # thus we will compile without cholmod, colamd, ccolamd
-    4.4.2 ) ./configure \
+    4.4.1 ) ./configure \
               --without-colamd \
               --without-ccolamd \
               --without-cholmod \ 
