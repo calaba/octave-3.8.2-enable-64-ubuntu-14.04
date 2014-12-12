@@ -102,8 +102,9 @@ cd ..
 #######################################################################################
 # SUITESPARSE
 #######################################################################################
-echo "`date` : Compiling SuiteSparse ..."
-cp -Rf ${libs64src_mods}/SUITESPARSE.mod/* SUITESPARSE/
+echo "`date` : Compiling SuiteSparse (version ${octave64_SS_version}) ..."
+
+cp -Rf ${libs64src_mods}/SS-${octave64_SS_version}.mod/* SUITESPARSE/
 cd SUITESPARSE
 # make prefix64=${prefix64}
 make library prefix64=${prefix64}
