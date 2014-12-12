@@ -40,7 +40,7 @@ then
     ./configure \
       --without-colamd \
       --without-ccolamd \
-      --without-cholmod \ 
+      --without-cholmod \
       --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
       --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
       ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
