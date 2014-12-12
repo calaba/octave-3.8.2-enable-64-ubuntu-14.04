@@ -35,11 +35,13 @@ then
       ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
 elif [ "${octave64_SS_version}" = "4.4.1" ]
 then
-# getting compilation error if cholmod is specified (seems colamd and ccolamd also use cholmod ... same error)
-# thus we will compile without cholmod, colamd, ccolamd
+# getting compilation error if cholmod is specified
+# thus we will compile without cholmod
     ./configure \
-      --without-colamd \
-      --without-ccolamd \
+      --with-colamd="-lcolamd -lsuitesparseconfig -lrt" \
+      --with-colamd-includedir=${prefix64}/include --with-colamd-libdir=${prefix64}/lib \
+      --with-ccolamd="-lccolamd -lsuitesparseconfig -lrt" \
+      --with-ccolamd-includedir=${prefix64}/include --with-ccolamd-libdir=${prefix64}/lib \
       --without-cholmod \
       --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
       --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
