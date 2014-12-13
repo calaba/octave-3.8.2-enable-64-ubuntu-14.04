@@ -1,12 +1,12 @@
 GitHub-Repo: calaba / octave-3.8.2-enable-64-ubuntu-14.04
 =========================================================
 
-Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 Ubuntu Linux Desktop 14.04 LTS. Successfull compilation and tests required some of the used libraries (BLAS, LAPACK, ...) to be re-compiled with 64bit indexing as well.
+Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 (64-bit) Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 LTS. Successfull compilation and tests required some of the by Octave used libraries (BLAS, LAPACK, SuiteSparse, ...) to be re-compiled with 64bit indexing as well.
 
 How to compile Octave with 64-bit indexing (experimental switch --enable-64):
 =============================================================================
 
-1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well - i.e. 14.04.1 or 14.10 - I just didn't have time to test those (yet).
+1) Install Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later or some earlier 64-bit versions of Ubuntu Linux Desktop as well - just didn't have time to test it there.
 
 2) (optional) Update Ubuntu Linux Desktop with latest updates (Internet connection required)
 
@@ -20,16 +20,41 @@ How to compile Octave with 64-bit indexing (experimental switch --enable-64):
 
 It will download this repo to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole recompilation.
 
+REMARK: Alternatively you can download the git repository to your user's HOME directory and compile it there ... 
+
 5) Run 'all.sh' script in the terminal window - you can redirect the stderr output of the all.sh script to file - i.e. 'all-err.log'.
 
     (start Terminal)
-    sudo su
+    sudo su     
     cd /opt/octave-3.8.2-enable-64-ubuntu-14.04
     ./all.sh 2>all-err.log
     
-Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break.
+REMARK: If you downloaded the git repository to your HOME directory then use cd '~/octave-3.8.2-enable-64-ubuntu-14.04' instead. You can compile the repository and libraries as non-root user but some commands (like installation of required tools/libraries and installation of the compiled libraries) require root access. To avoid beeing asked for sudo password multiple times during compilation - use for example 'sudo ls' command before you execute the 'all.sh' script.
     
-It will execute following scripts in this order:
+IMPORTANT: Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break. There are following important parameters in the 'compile-params.in' file you should check and (if needed) change - before you start the compilation script 'all.sh'. Those are (use 'nano compile-params.in' to edit the compilation parameters):
+
+octave64_gitroot = ${HOME}/octave-3.8.2-enable-64-ubuntu-14.04
+
+In the above example while compiling it in /opt directory set the git root folder accordingly to 'export octave64_gitroot = /opt/octave-3.8.2-enable-64-ubuntu-14.04'
+        
+export prefix64=/usr/local
+
+This is where the compiled libraries and octave will be installed - into sub-directories (/lib, /bin, /include, /share, ...) of this folder
+        
+export octave64_SS_version=4.2.1
+
+Which version of SuiteSparse library should be used. We recommend the default 4.2.1. Alternative 4.4.1 is also prepared for compilation but this won't include use of "CHOLMOD" library as in the versions of SuiteSparse 4.3.x the SuiteSparse API has chnaged which is causing compilation issues of Octave if CHOLMOD is used.
+        
+export octave64_libs_compilation_test=N
+
+You can alternatively swicth this to 'Y' in order to execute tests of compiled libraries. The overall compilation time will be then longer but you can check for errors and warning reported by the particular library tests after their compilation from source.
+        
+export octave64_compilation_test=Y
+
+By default we want Ocatve compilation process to run final tests. To speed up - you can switch to 'N'.    
+
+
+The script 'all.sh' will execute following scripts in this order:
 
     a) Script '1-compile-install-prereq.sh' 
     
@@ -45,15 +70,14 @@ In order to succeed with compilation of the libraries in 64-bit indexing mode it
     
     d) Script '4-compile-64-octave.sh' - Compiles Octave 3.8.2 sources with 64-bit indexing (option --enable-64) and uses the pre-compiled libraries from the step c) above.  
     
-At the end of the Octave source code compilation it runs Octave internal tests (by calling 'make check' in octave source directory) - all test are sopposed to succeed - this is the expected output at the end of the script after running make check:
+At the end of the Octave source code compilation it runs Octave internal tests (by calling 'make check' in octave source directory) - all test are supposed to succeed - this is the expected output at the end of the script after running make check:
     
-            <TODO> fill correct values:
             Summary: 
             
-              PASS     11202
-              FAIL         0
-              XFAIL        7
-              SKIPPED    395
+                  PASS     11561    (or 11543 if SuiteSparse 4.4.1 is used)
+                  FAIL         0
+                  XFAIL        7
+                  SKIPPED     36    (or 54 if SuiteSparse 4.4.1 is used)
 
 REMARK: All scripts above in steps a) to d) store full output (stdout and stderr) into file with same name as the script name and extension .log - i.e. 2-compile-unpack-src.log, 3-compile-64-libs.log, etc. You can check those for more details while troubleshooting issues.
     
@@ -88,7 +112,6 @@ REMARK: It might be necessary to set environment variables LD_LIBRARY_PATH and L
     export LD_LIBRARY_PATH=${prefix64}/lib
     export LD_RUN_PATH=${prefix64}/lib
 
-
 Enjoy! Richard Calaba (calaba@gmail.com)
 
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
@@ -120,12 +143,29 @@ Home:               http://www.gnu.org/software/octave/download.html
 Octave Source Code: ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz
 
 
-SuiteSparse-4.4.1.tar.gz
-------------------------
+SS-4.2.1/SuiteSparse-4.2.1.tar.gz or SS-4.4.1/SuiteSparse-4.4.1.tar.gz
+----------------------------------------------------------------------
 
 Home:           http://faculty.cse.tamu.edu/davis/suitesparse.html
 
+Library Source: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.2.1.tar.gz
 Library Source: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.1.tar.gz
+
+If you use Suite Sparse 4.4.1 without disabling use of the cholmod library (./configure --without-cholmod) then you will get following errors during Octave sources compilation (due to change of API interface in versions SuiteSparse 4.3.x and above):
+
+array/CSparse.cc:5667:19: error: 'cholmod_common' has no member named 'print_function'
+               cm->print_function = 0;
+                   ^
+array/CSparse.cc:5672:19: error: 'cholmod_common' has no member named 'print_function'
+               cm->print_function =&SparseCholPrint;
+                   ^
+array/CSparse.cc:5676:15: error: 'cholmod_common' has no member named 'complex_divide'
+           cm->complex_divide = CHOLMOD_NAME(divcomplex);
+               ^
+array/CSparse.cc:5677:15: error: 'cholmod_common' has no member named 'hypotenuse'
+           cm->hypotenuse = CHOLMOD_NAME(hypot);
+
+... and more ...
 
 Arpack96 (ARPACK folder)
 ------------------------
@@ -155,10 +195,13 @@ Home:           http://www.gnu.org/software/glpk/
 
 Library Source: http://ftp.gnu.org/gnu/glpk/glpk-4.55.tar.gz
 
-metis-4.0.3.tar.gz
-------------------
 
-(Metis is needed for SuiteSparse compilation, the SuiteSparse 4.4.1 README is mentioning use of Metis 4.0.1 however Metis 4.0.1 doesn't compile in Ubuntu 14.04. However the Metis 4.0.3 compiles fine)
+SS-4.2.1/metis-4.0.1.tar.gz or SS-4.4.1/metis-4.0.3.tar.gz
+----------------------------------------------------------
+
+Metis library is optionally needed for SuiteSparse compilation, the SuiteSparse 4.4.1 README is mentioning use of Metis 4.0.1 however Metis 4.0.1 doesn't compile by defualt so I used Metis 4.0.3 which seemd to work fine. 
+
+For the SuiteSparse 4.2.1 we use the Metis 4.0.1 with some modifications as documented on the Internet in order to get it compiled.
 
 Home:           http://glaros.dtc.umn.edu/gkhome/metis/metis/download
 
