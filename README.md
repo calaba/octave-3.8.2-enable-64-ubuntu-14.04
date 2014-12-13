@@ -242,11 +242,6 @@ In addition in the sub-folder '_not_used' of the folder where all the source arc
 
     Source:     http://forge.scilab.org/index.php/p/arpack-ng/downloads/get/arpack-ng_3.1.5.tar.gz
     
-    Metis-4.0.1
-    -----------
-
-    As mentioned above - Metis 4.0.1 doesn't compile in Ubuntu Desktop 14.04 - thus using Metis 4.0.3
-
 
 References to Octave compilation troubleshooting Web Sites:
 ==========================================================
