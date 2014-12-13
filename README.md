@@ -74,10 +74,10 @@ At the end of the Octave source code compilation it runs Octave internal tests (
     
             Summary: 
             
-                  PASS     11561    (or 11543 if SuiteSparse 4.4.1 is used)
+                  PASS     11561    (or 11543 if SuiteSparse 4.4.1 is used with switch '--without-cholmod')
                   FAIL         0
                   XFAIL        7
-                  SKIPPED     36    (or 54 if SuiteSparse 4.4.1 is used)
+                  SKIPPED     36    (or 52 if SuiteSparse 4.4.1 is used with switch '--without-cholmod')
 
 REMARK: All scripts above in steps a) to d) store full output (stdout and stderr) into file with same name as the script name and extension .log - i.e. 2-compile-unpack-src.log, 3-compile-64-libs.log, etc. You can check those for more details while troubleshooting issues.
     
