@@ -21,7 +21,7 @@ export octave64_SS_version=4.2.1
 
 # to enable testing of compiled libraries set following parameter to:
 # export octave64_libs_compilation_test=Y
-export octave64_libs_compilation_test=Y
+export octave64_libs_compilation_test=N
 
 # to enable testing of compiled octave set following parameter to:
 # export octave64_compilation_test=Y
