@@ -3,6 +3,32 @@ GitHub-Repo: calaba / octave-3.8.2-enable-64-ubuntu-14.04
 
 Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 (64-bit) Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 LTS. Successfull compilation and tests required some of the by Octave used libraries (BLAS, LAPACK, SuiteSparse, ...) to be re-compiled with 64bit indexing as well.
 
+
+What are we trying to address by enabling 64-bit index enablement:
+==================================================================
+
+Source: https://lists.gnu.org/archive/html/help-octave/2010-07/msg00223.html
+
+On 64-bit systems, Octave is limited to (approximately) the following array sizes:
+    
+    double:    16GB
+    single:     8GB 
+    {u,}int64: 16GB
+    {u,}int32:  8GB
+    {u,}int16:  4GB
+    {u,}int8:   2GB
+
+In each case, the limit is really 2^31-1 elements because of the default type of the value used for indexing arrays (signed 32-bit integer, corresponding to the size of a Fortran INTEGER value). 
+
+Trying to create larger arrays will produce the following error:
+
+>   octave:1> a = zeros (1024*1024*1024*3, 1, 'int8'); error: memory
+>   exhausted or requested size too large for range of Octave's index
+>   type -- trying to return to prompt
+
+You will obtain this error even if your system has enough memory to create this array (4 GB in the above case).
+
+
 How to compile Octave with 64-bit indexing (experimental switch --enable-64):
 =============================================================================
 
