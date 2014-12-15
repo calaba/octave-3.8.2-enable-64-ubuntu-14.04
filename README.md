@@ -1,7 +1,7 @@
 GitHub-Repo: calaba / octave-3.8.2-enable-64-ubuntu-14.04
 =========================================================
 
-Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64bit indexing of memory objects) on x64 (64-bit) Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 LTS. Successfull compilation and tests required some of the by Octave used libraries (BLAS, LAPACK, SuiteSparse, ...) to be re-compiled with 64bit indexing as well.
+Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch to enable 64-bit indexing of memory objects) on x64 (64-bit) Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 LTS. Successfull compilation and tests require some of the  libraries (BLAS, LAPACK, SuiteSparse, ARPACK, GLPK, ...) used by Octave to be re-compiled with 64-bit indexing support as well.
 
 
 What are we trying to address by enabling 64-bit index enablement:
@@ -32,19 +32,19 @@ You will obtain this error even if your system has enough memory to create this 
 How to compile Octave with 64-bit indexing (experimental switch --enable-64):
 =============================================================================
 
-1) Install Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later or some earlier 64-bit versions of Ubuntu Linux Desktop as well - just didn't have time to test it there.
+1) Install Ubuntu Linux Desktop 14.04 / 14.04.1 / 14.10 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later/earlier 64-bit versions of Ubuntu Linux Desktop as well - just didn't have time to test it on those.
 
 2) (optional) Update Ubuntu Linux Desktop with latest updates (Internet connection required)
 
 3) Install git by running command 'sudo apt-get install git' from terminal window (Internet connection required)
 
-4) Clone this repository into your folder of choice (i.e. into /opt folder) by executing: 
+4) Clone this repository (Internet connection required) into your folder of choice (i.e. into /opt folder) by executing: 
 
     (as root - sudo su)
     cd /opt
     sudo git clone https://github.com/calaba/octave-3.8.2-enable-64-ubuntu-14.04.git
 
-It will download this repo to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole recompilation.
+It will download this repository to folder /opt/octave-3.8.2-enable-64-ubuntu-14.04 where you can execute the whole re-compilation of Octave and required libraries.
 
 REMARK: Alternatively you can download the git repository to your user's HOME directory and compile it there ... 
 
@@ -59,36 +59,36 @@ REMARK: If you downloaded the git repository to your HOME directory then use cd 
     
 IMPORTANT: Additional parameters for tuning the compilation and libraries installation process are in the file 'compile-params.in'. If you decide to play around and change any of the parameters in the file 'compile-params.in', there is no guarantee the automated compilation process won't break. There are following important parameters in the 'compile-params.in' file you should check and (if needed) change - before you start the compilation script 'all.sh'. Those are (use 'nano compile-params.in' to edit the compilation parameters):
 
-octave64_gitroot = ${HOME}/octave-3.8.2-enable-64-ubuntu-14.04
+Parameter: octave64_gitroot = ${HOME}/octave-3.8.2-enable-64-ubuntu-14.04
 
 In the above example while compiling it in /opt directory set the git root folder accordingly to 'export octave64_gitroot = /opt/octave-3.8.2-enable-64-ubuntu-14.04'
         
-export prefix64=/usr/local
+Parameter: export prefix64=/usr/local
 
 This is where the compiled libraries and octave will be installed - into sub-directories (/lib, /bin, /include, /share, ...) of this folder
         
-export octave64_SS_version=4.2.1
+Parameter: export octave64_SS_version=4.2.1
 
 Which version of SuiteSparse library should be used. We recommend the default 4.2.1. Alternative 4.4.1 is also prepared for compilation but this won't include use of "CHOLMOD" library as in the versions of SuiteSparse 4.3.x the SuiteSparse API has chnaged which is causing compilation issues of Octave if CHOLMOD is used.
         
-export octave64_libs_compilation_test=N
+Parameter: export octave64_libs_compilation_test=N
 
 You can alternatively swicth this to 'Y' in order to execute tests of compiled libraries. The overall compilation time will be then longer but you can check for errors and warning reported by the particular library tests after their compilation from source.
         
-export octave64_compilation_test=Y
+Parameter: export octave64_compilation_test=Y
 
 By default we want Ocatve compilation process to run final tests. To speed up - you can switch to 'N'.    
 
 
 The script 'all.sh' will execute following scripts in this order:
 
-    a) Script '1-compile-install-prereq.sh' 
+    a) Script '1-compile-install-prereq.sh' (Internet connection required)
     
-This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 1 GB (for Ubuntu 14.04 LTS and 14.04.1 LTS) of size thus the whole download and installation procedure takes some time depending on your Internet connection speed and speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB texlive installation to be downloaded.
+This installs all required libraries and tools for compilation using apt-get command. The tools & libraries to be installed are approximetly 1 GB of size (for Ubuntu 14.04 LTS and 14.04.1 LTS) thus the whole download and installation procedure takes some time depending on your Internet connection speed and alos depending on speed of your HW. In case compilation without documentation ("--disable-docs") is only needed, you do not have to install texlive and can save approximately 580MB of texlive installation to be downloaded.
     
     b) Script '2-compile-unpack-src.sh' - unpacks all sources of used libraries and sources of Octave 3.8.2 (currently latest).
        
-All sources are stored in archive files in subdirectory 'x64-libs\_archives' - those are orignal versions downloaded from their respective web sites (see below for links to original web sites). Feel free to replace them with your own downloaded files or newer versions of those used libraries. Remark: If you want use newer versions you might need to play with the automatuion script source codes to make sure the rest of the automated compilation works fine.
+All sources are stored in archive files in subdirectory 'x64-libs\_archives' - those are orignal versions downloaded from their respective web sites (see below for links to original web sites). Feel free to replace them with your own downloaded files or newer versions of those used libraries. Remark: If you want use newer versions you might need to play with the automation script source codes to make sure the rest of the automated compilation works fine.
        
     c)  Script '3-compile-64-libs.sh' - Compiles & installs required libraries in mode to support 64-bit indexing.
     
@@ -113,17 +113,15 @@ You can test whether it works as you need. I.e. you can test whether you can all
     
        octave:1> a = zeros (1024*1024*1024*3, 1, 'int8');
         
-If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should not get this error which you will get in octave with default 32-bit indexing:
+If you have enough of free memory (3GB of physical memory + swap file(s) size) then you should *NOT* get this error which you will get in octave with default 32-bit indexing:
         
         error: memory exhausted or requested size too large
         for range of Octave's index type 
     
-In regular Octave with 32-bit indexing the physical limit of the memory array index seems to be (2^31 - 31 bits), this is the output of memory allocation of 2GBs and (2GBs - 1 Byte) in regular octave 3.8.2:
+In regular Octave with 32-bit indexing would the output of the above command:
     
         octave:15> a = zeros (2147483647, 1, 'int8');
         error: out of memory or dimension too large for Octave's index type
-        octave:15> a = zeros (2147483646, 1, 'int8');
-        octave:16> 
 
 6) If you are satisfied with Octave compilation with enabled 64bit indexing you can cd to Octave sources directory (octave-3.8.2) and install Octave by running command 'sudo make install'. 
 
@@ -142,7 +140,6 @@ Enjoy! Richard Calaba (calaba@gmail.com)
 
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
 
-
 3rd party libraries - required to re-compile Octave with --enable-64:
 =====================================================================
 
@@ -150,7 +147,7 @@ All libraries which are required by Octave are referred here:
 
     1) https://www.gnu.org/software/octave/doc/interpreter/External-Packages.html 
 
-However only some of them require re-compilation with 64bit enabled indexing as mentioned here:
+However only some of them require re-compilation with 64-bit enabled indexing, as mentioned for example here:
 
     2) https://www.gnu.org/software/octave/doc/interpreter/Compiling-Octave-with-64_002dbit-Indexing.html
 
@@ -179,18 +176,19 @@ Library Source: http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.1.
 
 If you use Suite Sparse 4.4.1 without disabling use of the cholmod library (./configure --without-cholmod) then you will get following errors during Octave sources compilation (due to change of API interface in versions SuiteSparse 4.3.x and above):
 
-array/CSparse.cc:5667:19: error: 'cholmod_common' has no member named 'print_function'
-               cm->print_function = 0;
-                   ^
-array/CSparse.cc:5672:19: error: 'cholmod_common' has no member named 'print_function'
-               cm->print_function =&SparseCholPrint;
-                   ^
-array/CSparse.cc:5676:15: error: 'cholmod_common' has no member named 'complex_divide'
-           cm->complex_divide = CHOLMOD_NAME(divcomplex);
-               ^
-array/CSparse.cc:5677:15: error: 'cholmod_common' has no member named 'hypotenuse'
-           cm->hypotenuse = CHOLMOD_NAME(hypot);
-
+> 
+> array/CSparse.cc:5667:19: error: 'cholmod_common' has no member named 'print_function'
+>                cm->print_function = 0;
+>                    ^
+> array/CSparse.cc:5672:19: error: 'cholmod_common' has no member named 'print_function'
+>                cm->print_function =&SparseCholPrint;
+>                    ^
+> array/CSparse.cc:5676:15: error: 'cholmod_common' has no member named 'complex_divide'
+>            cm->complex_divide = CHOLMOD_NAME(divcomplex);
+>                ^
+> array/CSparse.cc:5677:15: error: 'cholmod_common' has no member named 'hypotenuse'
+>            cm->hypotenuse = CHOLMOD_NAME(hypot);
+> 
 ... and more ...
 
 Arpack96 (ARPACK folder)
@@ -254,19 +252,19 @@ Not used libraries (feel free to plug them in):
 
 In addition in the sub-folder '_not_used' of the folder where all the source archives of used libraries are located there there are following libraries:
 
-    ATLAS atlas3.10.2.tar.bz2 (BLAS / LAPACK replacement) 
-    -----------------------------------------------------
+ATLAS atlas3.10.2.tar.bz2 (BLAS / LAPACK replacement) 
+-----------------------------------------------------
 
-    Home:   https://sourceforge.net/projects/math-atlas/files/
+Home:   https://sourceforge.net/projects/math-atlas/files/
 
-    Source: http://sourceforge.net/projects/math-atlas/files/Stable/3.10.2/atlas3.10.2.tar.bz2/download
-        
-    Arpack-Ng - newer and more optimized ARPACK version
-    ---------------------------------------------------
+Source: http://sourceforge.net/projects/math-atlas/files/Stable/3.10.2/atlas3.10.2.tar.bz2/download
+  
+Arpack-Ng - newer and more optimized ARPACK version
+---------------------------------------------------
 
-    Home:       https://github.com/opencollab/arpack-ng
+Home:       https://github.com/opencollab/arpack-ng
 
-    Source:     http://forge.scilab.org/index.php/p/arpack-ng/downloads/get/arpack-ng_3.1.5.tar.gz
+Source:     http://forge.scilab.org/index.php/p/arpack-ng/downloads/get/arpack-ng_3.1.5.tar.gz
     
 
 References to Octave compilation troubleshooting Web Sites:
@@ -299,7 +297,7 @@ While working on this Octave compilation challenge I had to research a lot of is
 Octave Sources compilation 32-bit indexing mode (default):
 ==========================================================
 
-For troubleshooting purposes if you wanna compare what is happening in the logs being produced while compiling Octave 3.8.2 from it's sources on Ubuntu 14.04 / 14.04.1 - here adding step-by-step scenari how to compile Octave with standard options (without the --enable-64 indexing):
+For troubleshooting purposes if you wanna compare what is happening in the logs being produced while compiling Octave 3.8.2 from it's sources on Ubuntu 14.04 / 14.04.1 - here adding step-by-step scenario how to compile Octave with standard options (without the --enable-64 indexing):
 
 1) Install Ubuntu Linux Desktop 14.04 from ISO distribution file (Installation CD-ROM can be downloaded from original distribution site http://mirror.anl.gov/pub/ubuntu-iso/DVDs/ubuntu/14.04/release/). The compilation and installation procedures might work on later versions of Ubuntu Linux Desktop as well.
 
@@ -363,139 +361,12 @@ You will get following error/warning output:
 
 You will get following error/warning output:
 
-    root@ubuntu:/opt/octave-3.8.2# make > make.log
-    Makefile:2848: warning: overriding commands for target `check'
-    Makefile:2410: warning: ignoring old commands for target `check'
-    Makefile:2848: warning: overriding commands for target `check'
-    Makefile:2410: warning: ignoring old commands for target `check'
-    system/.libs/libsystem.a(system_libsystem_la-file-ops.o): In function `octave_tempnam(std::string const&, std::string const&, std::string&)':
-    /opt/octave-3.8.2/liboctave/system/file-ops.cc:664: warning: the use of `tempnam' is dangerous, better use `mkstemp'
-    parse-tree/lex.cc:3922:13: warning: unused parameter 'yyscanner' [-Wunused-parameter]
-     static void yy_fatal_error (yyconst char* msg , yyscan_t yyscanner)
-                 ^
-    parse-tree/lex.cc:4254:7: warning: unused parameter 'yyscanner' [-Wunused-parameter]
-     void *octave_alloc (yy_size_t  size , yyscan_t yyscanner)
-           ^
-    parse-tree/lex.cc:4259:7: warning: unused parameter 'yyscanner' [-Wunused-parameter]
-     void *octave_realloc  (void * ptr, yy_size_t  size , yyscan_t yyscanner)
-           ^
-    parse-tree/lex.cc:4271:6: warning: unused parameter 'yyscanner' [-Wunused-parameter]
-     void octave_free (void * ptr , yyscan_t yyscanner)
-          ^
-          
-    In file included from octave-value/ov-cx-diag.cc:32:0:
-    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
-    octave_value_list&, bool)':
-    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef typename DMT::element_type el_type;
-                                  ^
-    In file included from octave-value/ov-flt-cx-diag.cc:30:0:
-    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
-    octave_value_list&, bool)':
-    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef typename DMT::element_type el_type;
-                                      ^
-    In file included from octave-value/ov-flt-re-diag.cc:30:0:
-    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
-    octave_value_list&, bool)':
-    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef typename DMT::element_type el_type;
-                                      ^
-    octave-value/ov-perm.cc: In member function 'virtual bool octave_perm_matrix::save_ascii(std::ostream&)':
-    octave-value/ov-perm.cc:263:39: warning: typedef 'idx_int_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef octave_int<octave_idx_type> idx_int_type;
-                                           ^
-    octave-value/ov-perm.cc: In member function 'virtual bool octave_perm_matrix::load_ascii(std::istream&)':
-    octave-value/ov-perm.cc:280:39: warning: typedef 'idx_int_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef octave_int<octave_idx_type> idx_int_type;
-                                           ^
-    In file included from octave-value/ov-re-diag.cc:31:0:
-    octave-value/ov-base-diag.cc: In member function 'octave_value octave_base_diag<DMT, MT>::do_index_op(const
-    octave_value_list&, bool)':
-    octave-value/ov-base-diag.cc:103:38: warning: typedef 'el_type' locally defined but not used [-Wunused-local-typedefs]
-       typedef typename DMT::element_type el_type;
-                                          ^
-
-    
-       src/octave-gui.cc:91:1: warning: unused parameter 'msg' [-Wunused-parameter]
-    Warning: dropping duplicate messages in 'languages/be_BY.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/de_DE.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/en_US.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/es_ES.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/fr_FR.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/nl_NL.qm':
-    
-    * Context: files_dock_widget
-
-   * Source: Find Files...
-
-    Warning: dropping duplicate messages in 'languages/pt_BR.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/pt_PT.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/ru_RU.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    Warning: dropping duplicate messages in 'languages/uk_UA.qm':
-    
-    * Context: files_dock_widget
-    * Source: Find Files...
-    
-    In file included from main.cc:70:0:
-    main.cc: In function ‘bool display_available(std::string&)’:
-    main.cc:108:52: warning: use of old-style cast [-Wold-style-cast]
-               Screen *screen = DefaultScreenOfDisplay (display);
-                                                        ^
-    main.cc:108:52: warning: use of old-style cast [-Wold-style-cast]
-               Screen *screen = DefaultScreenOfDisplay (display);
-                                                        ^
-    warning: [options] bootstrap class path not set in conjunction with -source 1.3
-    1 warning
-    warning: [options] bootstrap class path not set in conjunction with -source 1.3
-    1 warning
-    warning: [options] bootstrap class path not set in conjunction with -source 1.3
-    1 warning
-    warning: [options] bootstrap class path not set in conjunction with -source 1.3
-    Note: org/octave/JDialogBox.java uses or overrides a deprecated API.
-    Note: Recompile with -Xlint:deprecation for details.
-    1 warning
-    Makefile:2848: warning: overriding commands for target `check'
-    Makefile:2410: warning: ignoring old commands for target `check'
-    Makefile:2565: warning: overriding commands for target `check'
-    Makefile:2153: warning: ignoring old commands for target `check'
-    Makefile:2565: warning: overriding commands for target `check'
-    Makefile:2153: warning: ignoring old commands for target `check'
-    Makefile:2848: warning: overriding commands for target `check'
-    Makefile:2410: warning: ignoring old commands for target `check'
-    root@ubuntu:/opt/octave-3.8.2# 
+>     root@ubuntu:/opt/octave-3.8.2# make > make.log
+>     Makefile:2848: warning: overriding commands for target `check'
+>     Makefile:2410: warning: ignoring old commands for target `check'
+>     Makefile:2848: warning: overriding commands for target `check'
+>     Makefile:2410: warning: ignoring old commands for target `check'
+>   ... many others ...
 
 8) Test Octave
 
@@ -521,14 +392,4 @@ You will get following error/warning output:
     If you are getting more SKIPPED tests - then you are missing some libraries for optional functionality!
     
     REMARK: If you want to play with Just-In-Time compiling in Octave - use "--jit-enable" switch in ./configure script (use ./configure --help for more options and help). Some more details about compiling Octave with JIT - see following blog http://blogs.bu.edu/mhirsch/2013/12/compiling-octave-3-8/ .
-
-
-
-
-    
-    
-    
-    
-
-
 
