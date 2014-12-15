@@ -22,7 +22,7 @@ In each case, the limit is really 2^31-1 elements because of the default type of
 
 Trying to create larger arrays will produce the following error:
 
->   octave:1> a = zeros (1024*1024*1024*3, 1, 'int8'); error: memory
+>   octave:1> a = zeros (1024 * 1024 * 1024 * 3, 1, 'int8'); error: memory
 >   exhausted or requested size too large for range of Octave's index
 >   type -- trying to return to prompt
 
