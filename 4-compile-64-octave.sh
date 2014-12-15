@@ -32,7 +32,7 @@ then
       --with-cholmod-includedir=${prefix64}/include --with-cholmod-libdir=${prefix64}/lib \
       --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
       --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
-      ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
+      ${octave64_config_extra} --prefix=${prefix64} --enable-64 F77_INTEGER_8_FLAG='-fdefault-integer-8' LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
 elif [ "${octave64_SS_version}" = "4.4.1" ]
 then
 # getting compilation error if cholmod is specified
@@ -45,7 +45,7 @@ then
       --without-cholmod \
       --with-umfpack="-lumfpack -lsuitesparseconfig -lrt" \
       --with-umfpack-includedir=${prefix64}/include --with-umfpack-libdir=${prefix64}/lib \
-      ${octave64_config_extra} --prefix=${prefix64} --enable-64 LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
+      ${octave64_config_extra} --prefix=${prefix64} --enable-64 F77_INTEGER_8_FLAG='-fdefault-integer-8' LIBS="${libs64}" LD_LIBRARY_PATH="${prefix64}/lib" CPPFLAGS="-I${prefix64}/include" LDFLAGS="-L${prefix64}/lib"
 else
     echo "SuiteSparse version ${octave64_SS_version} - compilation not tested/supported ... "; 
     exit 1
