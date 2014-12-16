@@ -140,6 +140,16 @@ Enjoy! Richard Calaba (calaba@gmail.com)
 
 (And feel free to improve this repo, make it more/better automated, less version dependent and bugs-free!)
 
+Virtual Applicance - VM image - with pre-compiled Octave 3.8.2 on Ubuntu Desktop 14.10 LTS:
+===========================================================================================
+
+If you were so patient to read the readme till here -> then there is a small reward in case you do not want to run the whole compilation on your own (approximately 3 hours (depending on your interent and HW speed) - including installation of the Ubuntu / Updates / git repository and needed tools). Without any guarantee on security / stability and what so ever - here is the OVA file to get your Octave 3.8.2 with 64-bit indexing enabled. 
+
+    Download here: https://drive.google.com/file/d/0Bz5GkHbD3o7KN012dFVodnNfbTg/view?usp=sharing
+    
+    (The default password of the both 'root' user and 'octave' user is 'password')
+
+
 3rd party libraries - required to re-compile Octave with --enable-64:
 =====================================================================
 
