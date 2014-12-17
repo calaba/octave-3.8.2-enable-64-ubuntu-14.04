@@ -5,7 +5,7 @@ Octave 3.8.2 source code compiled with "--enable-64" flag (experimental switch t
 
 While trying to find a recipe how to 'cook' an Octave with 64-bit indexing enabled for Linux x64 I found many psots over internet suggesting that it can be done 'somehow' but none of them had shown full solution. That's the reason why I spent several weeks trying, searching, reading and testing the way how to compile Octave with it's libraries it requires to fully support 64-bit indexing.
 
-While searching I found also this site - http://mxeoctave.osuv.de/ - which provides source-codes and binaries for Octave (currently also 3.8.2) for Windows. The maintain also "large indexing" version which offers Octave for Windows compiled with --enable-64 flag. 
+While searching I found also this site - http://mxeoctave.osuv.de/ - which provides source-codes and binaries for Octave for Windows (currently also version 3.8.2) . They also maintain "large indexing" version which offers Octave for Windows compiled with --enable-64 flag. 
 
 
 What are we trying to address by enabling 64-bit index enablement:
