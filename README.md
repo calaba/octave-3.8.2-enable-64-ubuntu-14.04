@@ -7,6 +7,8 @@ While trying to find a recipe how to 'cook' an Octave with 64-bit indexing enabl
 
 While searching I found also this site - http://mxeoctave.osuv.de/ - which provides source-codes and binaries for Octave for Windows (currently also version 3.8.2) . They also maintain "large indexing" version which offers Octave for Windows compiled with --enable-64 flag. 
 
+For less technical people - maybe this BLOG can give easier explanation - http://calaba.tumblr.com/post/107087607479/octave-64 .
+
 
 What are we trying to address by enabling 64-bit index enablement:
 ==================================================================
